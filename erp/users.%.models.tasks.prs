@@ -4416,8 +4416,9 @@ filter(
 		,union(
 		{.:tasks}
 		,table(
-			&quot;&lt;&lt;uuid&gt;&lt;S&gt;&gt; &lt;&lt;summary&gt;&lt;S&gt;&gt; &lt;&lt;description&gt;&lt;S&gt;&lt;F=N&gt;&gt; &lt;&lt;parent&gt;&lt;S&gt;&lt;F=N&gt;&gt; &lt;&lt;priority&gt;&lt;I&gt;&lt;F=N&gt;&gt; &lt;&lt;laboriousness&gt;&lt;I&gt;&lt;F=N&gt;&gt; &lt;&lt;type&gt;&lt;I&gt;&lt;F=N&gt;&gt; &lt;&lt;status&gt;&lt;I&gt;&lt;F=N&gt;&gt; &lt;&lt;category&gt;&lt;I&gt;&lt;F=N&gt;&gt; &lt;&lt;assignee&gt;&lt;I&gt;&lt;F=N&gt;&gt; &lt;&lt;tags&gt;&lt;D&gt;&lt;F=N&gt;&gt; &lt;&lt;relations&gt;&lt;D&gt;&lt;F=N&gt;&gt; &lt;&lt;projectUuid&gt;&lt;S&gt;&lt;F=N&gt;&gt;&quot;
+			&quot;&lt;&lt;uuid&gt;&lt;S&gt;&gt; &lt;&lt;key&gt;&lt;S&gt;&gt; &lt;&lt;summary&gt;&lt;S&gt;&gt; &lt;&lt;description&gt;&lt;S&gt;&lt;F=N&gt;&gt; &lt;&lt;parent&gt;&lt;S&gt;&lt;F=N&gt;&gt; &lt;&lt;priority&gt;&lt;I&gt;&lt;F=N&gt;&gt; &lt;&lt;laboriousness&gt;&lt;I&gt;&lt;F=N&gt;&gt; &lt;&lt;type&gt;&lt;I&gt;&lt;F=N&gt;&gt; &lt;&lt;status&gt;&lt;I&gt;&lt;F=N&gt;&gt; &lt;&lt;category&gt;&lt;I&gt;&lt;F=N&gt;&gt; &lt;&lt;assignee&gt;&lt;I&gt;&lt;F=N&gt;&gt; &lt;&lt;tags&gt;&lt;D&gt;&lt;F=N&gt;&gt; &lt;&lt;relations&gt;&lt;D&gt;&lt;F=N&gt;&gt; &lt;&lt;projectUuid&gt;&lt;S&gt;&lt;F=N&gt;&gt;&quot;
 			,cell({users.admin.models.utils:generateUUID()},&quot;uuid&quot;)
+			,cell(callFunction(&quot;users.admin.models.referenceTable&quot;, &quot;getKeyByProject&quot;, {projectUuid}))
 			,{summary}
 			,{description}
 			,{parent}

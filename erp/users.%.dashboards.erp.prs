@@ -963,13 +963,35 @@ addRecords(
                           <record>
                             <value name="bindingId">8493741415747540992</value>
                             <value name="target">form/htmlSnippetReadArticle:htmlContent</value>
-                            <value name="expression">select(&#xd;
-  {users.admin.models.knowledgeBase:getArticles()}&#xd;
-  , &quot;article&quot;&#xd;
-  , &quot;uuid&quot;&#xd;
-  , cell({form/customTreeArticlesList:selectedNodes})&#xd;
-)&#xd;
+                            <value name="expression">select(
+  {users.admin.models.knowledgeBase:getArticles()}
+  , &quot;article&quot;
+  , &quot;uuid&quot;
+  , cell({form/customTreeArticlesList:selectedNodes})
+)
   </value>
+                            <value name="activator">form/customTreeArticlesList:mouseClicked@</value>
+                            <value name="onevent">1</value>
+                          </record>
+                          <record>
+                            <value name="bindingId">538751140587829248</value>
+                            <value name="target">form/customTreeEditRelatedArticles:treeData</value>
+                            <value name="expression">callFunction(
+  &quot;users.admin.models.knowledgeBase&quot;
+  ,&quot;getRelatedByArticle&quot;
+  , {form/customTreeArticlesList:selectedNodes$key}
+)</value>
+                            <value name="activator">form/customTreeArticlesList:mouseClicked@</value>
+                            <value name="onevent">1</value>
+                          </record>
+                          <record>
+                            <value name="bindingId">7021217221702522880</value>
+                            <value name="target">form/customTreeRelatedArticles:treeData</value>
+                            <value name="expression">callFunction(
+  &quot;users.admin.models.knowledgeBase&quot;
+  ,&quot;getRelatedByArticle&quot;
+  , {form/customTreeArticlesList:selectedNodes$key}
+)</value>
                             <value name="activator">form/customTreeArticlesList:mouseClicked@</value>
                             <value name="onevent">1</value>
                           </record>
@@ -1136,6 +1158,9 @@ cell(
                         </format>
                         <records>
                           <record>
+                            <value name="path">barChart0</value>
+                          </record>
+                          <record>
                             <value name="path">buttonAddArticle</value>
                           </record>
                           <record>
@@ -1299,6 +1324,12 @@ cell(
                           </record>
                           <record>
                             <value name="path">labelTaskInfo</value>
+                          </record>
+                          <record>
+                            <value name="path">lineChart0</value>
+                          </record>
+                          <record>
+                            <value name="path">pieChart0</value>
                           </record>
                           <record>
                             <value name="path">tabArticles</value>
@@ -2186,7 +2217,7 @@ cell(
                       </table>
                     </value>
                     <value name="tabPosition">left</value>
-                    <value name="activeTab">tabTasks</value>
+                    <value name="activeTab">tabDashboard</value>
                     <value name="externalButtons">
                       <table>
                         <format maxRecords="2147483647">
@@ -4297,6 +4328,17 @@ cell(
                             </field>
                           </fields>
                         </format>
+                        <records>
+                          <record>
+                            <value name="childContexts">pieChart0</value>
+                          </record>
+                          <record>
+                            <value name="childContexts">lineChart0</value>
+                          </record>
+                          <record>
+                            <value name="childContexts">barChart0</value>
+                          </record>
+                        </records>
                       </table>
                     </value>
                     <value name="pageSize">10</value>
@@ -4420,7 +4462,14 @@ cell(
                           </fields>
                         </format>
                         <records>
-                          <record/>
+                          <record>
+                            <value name="template">32</value>
+                            <value name="unit">px</value>
+                          </record>
+                          <record>
+                            <value name="template">220</value>
+                            <value name="unit">px</value>
+                          </record>
                           <record/>
                         </records>
                       </table>
@@ -4767,6 +4816,7 @@ cell(
                         </records>
                       </table>
                     </value>
+                    <value name="tabType">card</value>
                     <value name="activeTab">tabTableView</value>
                     <value name="externalButtons">
                       <table>
@@ -6962,7 +7012,6 @@ cell(
                     </value>
                     <value name="title"/>
                     <value name="size">600px</value>
-                    <value name="drawerVisible">1</value>
                     <value name="closeIcon">
                       <table>
                         <format maxRecords="1" minRecords="1">
@@ -14189,7 +14238,7 @@ cell(
                         </records>
                       </table>
                     </value>
-                    <value name="activeTab">tabGraphViewArticles</value>
+                    <value name="activeTab">tabReadArticle</value>
                     <value name="externalButtons">
                       <table>
                         <format maxRecords="2147483647">
@@ -14531,6 +14580,7 @@ cell(
                       </table>
                     </value>
                     <value name="name">tabReadArticle</value>
+                    <value name="overflow">hidden</value>
                     <value name="style"/>
                     <value name="gridBreakpoints">
                       <table>
@@ -14550,7 +14600,7 @@ cell(
                         <records>
                           <record>
                             <value name="breakpoint">fullHD</value>
-                            <value name="containerStyle">indent-top:0*~*indent-bottom:0*~*indent-left:0*~*indent-right:0*~*order-id:0*~*active:false*~*overflow:auto*~*</value>
+                            <value name="containerStyle">indent-top:0*~*indent-bottom:0*~*indent-left:0*~*indent-right:0*~*order-id:0*~*active:false*~*overflow:hidden*~*</value>
                           </record>
                         </records>
                       </table>
@@ -16435,7 +16485,7 @@ cell(
                     <value name="name">htmlSnippetReadArticle</value>
                     <value name="gridx">2</value>
                     <value name="gridy">2</value>
-                    <value name="gridWidth">9</value>
+                    <value name="gridWidth">8</value>
                     <value name="style"/>
                     <value name="gridBreakpoints">
                       <table>
@@ -16455,7 +16505,7 @@ cell(
                         <records>
                           <record>
                             <value name="breakpoint">fullHD</value>
-                            <value name="containerStyle">order-id:0*~*active:false*~*gridx:2*~*gridy:2*~*grid-width:9*~*grid-height:1*~*overflow:auto*~*</value>
+                            <value name="containerStyle">order-id:0*~*active:false*~*gridx:2*~*gridy:2*~*grid-width:8*~*grid-height:1*~*overflow:auto*~*</value>
                           </record>
                         </records>
                       </table>
@@ -16639,7 +16689,7 @@ cell(
                     <value name="name">textAreaEditArticle</value>
                     <value name="gridx">2</value>
                     <value name="gridy">2</value>
-                    <value name="gridWidth">9</value>
+                    <value name="gridWidth">8</value>
                     <value name="gridHeight">4</value>
                     <value name="style"/>
                     <value name="gridBreakpoints">
@@ -16660,7 +16710,7 @@ cell(
                         <records>
                           <record>
                             <value name="breakpoint">fullHD</value>
-                            <value name="containerStyle">order-id:0*~*active:false*~*gridx:2*~*gridy:2*~*grid-width:9*~*grid-height:4*~*overflow:auto*~*</value>
+                            <value name="containerStyle">order-id:0*~*active:false*~*gridx:2*~*gridy:2*~*grid-width:8*~*grid-height:4*~*overflow:auto*~*</value>
                           </record>
                         </records>
                       </table>
@@ -17400,7 +17450,7 @@ cell(
                     <value name="name">htmlSnippetTagsRead</value>
                     <value name="gridx">6</value>
                     <value name="gridy">1</value>
-                    <value name="gridWidth">5</value>
+                    <value name="gridWidth">4</value>
                     <value name="style"/>
                     <value name="gridBreakpoints">
                       <table>
@@ -17420,7 +17470,7 @@ cell(
                         <records>
                           <record>
                             <value name="breakpoint">fullHD</value>
-                            <value name="containerStyle">order-id:0*~*active:false*~*gridx:6*~*gridy:1*~*grid-width:5*~*grid-height:1*~*overflow:auto*~*</value>
+                            <value name="containerStyle">order-id:0*~*active:false*~*gridx:6*~*gridy:1*~*grid-width:4*~*grid-height:1*~*overflow:auto*~*</value>
                           </record>
                         </records>
                       </table>
@@ -17645,7 +17695,7 @@ cell(
                     <value name="name">textFieldTagsEdit</value>
                     <value name="gridx">8</value>
                     <value name="gridy">1</value>
-                    <value name="gridWidth">3</value>
+                    <value name="gridWidth">2</value>
                     <value name="style"/>
                     <value name="gridBreakpoints">
                       <table>
@@ -17665,7 +17715,7 @@ cell(
                         <records>
                           <record>
                             <value name="breakpoint">fullHD</value>
-                            <value name="containerStyle">order-id:0*~*active:false*~*gridx:8*~*gridy:1*~*grid-width:3*~*grid-height:1*~*overflow:auto*~*</value>
+                            <value name="containerStyle">order-id:0*~*active:false*~*gridx:8*~*gridy:1*~*grid-width:2*~*grid-height:1*~*overflow:auto*~*</value>
                           </record>
                         </records>
                       </table>
@@ -27326,6 +27376,44 @@ cell(
                                             <value name="title">Статья 1</value>
                                             <value name="article">&lt;h1&gt;Hi, there!&lt;/h1&gt;</value>
                                             <value name="parent"/>
+                                            <value name="tags">
+                                              <table>
+                                                <format maxRecords="2147483647">
+                                                  <fields>
+                                                    <field name="tag" type="S">
+                                                      <defaultValue/>
+                                                    </field>
+                                                  </fields>
+                                                </format>
+                                                <records>
+                                                  <record>
+                                                    <value name="tag">#core</value>
+                                                  </record>
+                                                  <record>
+                                                    <value name="tag">#search</value>
+                                                  </record>
+                                                </records>
+                                              </table>
+                                            </value>
+                                            <value name="relatedArticles">
+                                              <table>
+                                                <format maxRecords="2147483647">
+                                                  <fields>
+                                                    <field name="article" type="S">
+                                                      <defaultValue/>
+                                                    </field>
+                                                  </fields>
+                                                </format>
+                                                <records>
+                                                  <record>
+                                                    <value name="article">4</value>
+                                                  </record>
+                                                  <record>
+                                                    <value name="article">a</value>
+                                                  </record>
+                                                </records>
+                                              </table>
+                                            </value>
                                           </record>
                                         </records>
                                       </table>
@@ -27381,6 +27469,22 @@ cell(
                                             <value name="title">Статья 2</value>
                                             <value name="article">Статья 2 loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun lloren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun oren ipsun loren ipsun loren ipsun loren ipsun </value>
                                             <value name="parent"/>
+                                            <value name="relatedArticles">
+                                              <table>
+                                                <format maxRecords="2147483647">
+                                                  <fields>
+                                                    <field name="article" type="S">
+                                                      <defaultValue/>
+                                                    </field>
+                                                  </fields>
+                                                </format>
+                                                <records>
+                                                  <record>
+                                                    <value name="article">5</value>
+                                                  </record>
+                                                </records>
+                                              </table>
+                                            </value>
                                           </record>
                                         </records>
                                       </table>
@@ -27490,6 +27594,22 @@ cell(
                                             <value name="code">3</value>
                                             <value name="title">Статья 2.2</value>
                                             <value name="parent">1</value>
+                                            <value name="tags">
+                                              <table>
+                                                <format maxRecords="2147483647">
+                                                  <fields>
+                                                    <field name="tag" type="S">
+                                                      <defaultValue/>
+                                                    </field>
+                                                  </fields>
+                                                </format>
+                                                <records>
+                                                  <record>
+                                                    <value name="tag">#search</value>
+                                                  </record>
+                                                </records>
+                                              </table>
+                                            </value>
                                           </record>
                                         </records>
                                       </table>
@@ -27544,6 +27664,22 @@ cell(
                                             <value name="code">4</value>
                                             <value name="title">Статья 2.1.1</value>
                                             <value name="parent">a</value>
+                                            <value name="tags">
+                                              <table>
+                                                <format maxRecords="2147483647">
+                                                  <fields>
+                                                    <field name="tag" type="S">
+                                                      <defaultValue/>
+                                                    </field>
+                                                  </fields>
+                                                </format>
+                                                <records>
+                                                  <record>
+                                                    <value name="tag">#important</value>
+                                                  </record>
+                                                </records>
+                                              </table>
+                                            </value>
                                           </record>
                                         </records>
                                       </table>
@@ -27808,6 +27944,22 @@ cell(
                                             <value name="code">3</value>
                                             <value name="title">Статья 2.2</value>
                                             <value name="parent">1</value>
+                                            <value name="tags">
+                                              <table>
+                                                <format maxRecords="2147483647">
+                                                  <fields>
+                                                    <field name="tag" type="S">
+                                                      <defaultValue/>
+                                                    </field>
+                                                  </fields>
+                                                </format>
+                                                <records>
+                                                  <record>
+                                                    <value name="tag">#search</value>
+                                                  </record>
+                                                </records>
+                                              </table>
+                                            </value>
                                             <value name="leftNode">1</value>
                                             <value name="relation">parent</value>
                                             <value name="rightNode">3</value>
@@ -27879,6 +28031,22 @@ cell(
                                             <value name="code">4</value>
                                             <value name="title">Статья 2.1.1</value>
                                             <value name="parent">a</value>
+                                            <value name="tags">
+                                              <table>
+                                                <format maxRecords="2147483647">
+                                                  <fields>
+                                                    <field name="tag" type="S">
+                                                      <defaultValue/>
+                                                    </field>
+                                                  </fields>
+                                                </format>
+                                                <records>
+                                                  <record>
+                                                    <value name="tag">#important</value>
+                                                  </record>
+                                                </records>
+                                              </table>
+                                            </value>
                                             <value name="leftNode">a</value>
                                             <value name="relation">parent</value>
                                             <value name="rightNode">4</value>
@@ -28477,7 +28645,13 @@ cell(
                         <records>
                           <record>
                             <value name="breakpoint">fullHD</value>
-                            <value name="containerStyle">order-id:0*~*active:false*~*gridx:11*~*gridy:2*~*grid-width:2*~*grid-height:1*~*overflow:auto*~*</value>
+                            <value name="containerStyle">order-id:0*~*active:false*~*gridx:11*~*gridy:2*~*grid-width:2*~*grid-height:1*~*overflow:auto*~*container-style:.rc-tree li .rc-tree-node-content-wrapper{height:auto;width: 95%;};
+.rc-tree-node-selected {
+    background-color: #b0deff;
+    border:0px;
+    opacity: .8;
+    border-radius: 10px;
+}*~*</value>
                           </record>
                         </records>
                       </table>
@@ -28493,7 +28667,13 @@ cell(
                         </format>
                       </table>
                     </value>
-                    <value name="containerStyle"/>
+                    <value name="containerStyle">.rc-tree li .rc-tree-node-content-wrapper{height:auto;width: 95%;};
+.rc-tree-node-selected {
+    background-color: #b0deff;
+    border:0px;
+    opacity: .8;
+    border-radius: 10px;
+}</value>
                     <value name="preloaderIcon">
                       <table>
                         <format maxRecords="1" minRecords="1">
@@ -28519,7 +28699,6 @@ cell(
                         </format>
                       </table>
                     </value>
-                    <value name="treeLabel">&quot;No related articles&quot;</value>
                     <value name="treeData">
                       <table>
                         <format maxRecords="2147483647">
@@ -28577,7 +28756,6 @@ cell(
                         </format>
                       </table>
                     </value>
-                    <value name="inputPlaceholder">&quot;No related articles&quot;</value>
                     <value name="treeStyle">
                       <table>
                         <format maxRecords="1" minRecords="1">
@@ -29338,6 +29516,7 @@ cell(
                     <value name="gridx">11</value>
                     <value name="gridy">2</value>
                     <value name="gridWidth">2</value>
+                    <value name="overflow">hidden</value>
                     <value name="style"/>
                     <value name="gridBreakpoints">
                       <table>
@@ -29357,7 +29536,13 @@ cell(
                         <records>
                           <record>
                             <value name="breakpoint">fullHD</value>
-                            <value name="containerStyle">order-id:0*~*active:false*~*gridx:11*~*gridy:2*~*grid-width:2*~*grid-height:1*~*overflow:auto*~*</value>
+                            <value name="containerStyle">order-id:0*~*active:false*~*gridx:11*~*gridy:2*~*grid-width:2*~*grid-height:1*~*overflow:hidden*~*container-style:.rc-tree li .rc-tree-node-content-wrapper{height:auto;width: 95%;};
+.rc-tree-node-selected {
+    background-color: #b0deff;
+    border:0px;
+    opacity: .8;
+    border-radius: 10px;
+}*~*</value>
                           </record>
                         </records>
                       </table>
@@ -29373,7 +29558,13 @@ cell(
                         </format>
                       </table>
                     </value>
-                    <value name="containerStyle"/>
+                    <value name="containerStyle">.rc-tree li .rc-tree-node-content-wrapper{height:auto;width: 95%;};
+.rc-tree-node-selected {
+    background-color: #b0deff;
+    border:0px;
+    opacity: .8;
+    border-radius: 10px;
+}</value>
                     <value name="preloaderIcon">
                       <table>
                         <format maxRecords="1" minRecords="1">
@@ -29399,7 +29590,6 @@ cell(
                         </format>
                       </table>
                     </value>
-                    <value name="treeLabel">No related articles</value>
                     <value name="treeData">
                       <table>
                         <format maxRecords="2147483647">
@@ -30378,6 +30568,2089 @@ cell(
                             </field>
                           </fields>
                         </format>
+                      </table>
+                    </value>
+                  </record>
+                </records>
+              </table>
+            </value>
+          </record>
+          <record>
+            <value name="name">pieChart0</value>
+            <value name="type">pieChart</value>
+            <value name="parameters">
+              <table>
+                <format maxRecords="1" minRecords="1">
+                  <fields>
+                    <field description="Name" name="name" nullable="true" type="S">
+                      <validators contentType="base64">HFIeXHcrXl5OYW1lIG1heSBjb250YWluIG9ubHkgTGF0aW4gbGV0dGVycywgZGlnaXRzLCBhbmQgdW5kZXJzY29yZXMd</validators>
+                      <defaultValue>
+                        <nullValue/>
+                      </defaultValue>
+                    </field>
+                    <field description="Tab ID" name="tabId" type="S">
+                      <defaultValue/>
+                    </field>
+                    <field description="Panel ID" name="panelId" type="S">
+                      <defaultValue/>
+                    </field>
+                    <field description="Order ID" name="orderId" type="I">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Active" name="active" type="B">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Column" name="gridx" type="I">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Row" name="gridy" type="I">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Column Span" name="gridWidth" type="I">
+                      <validators contentType="base64">HEweMSAyMTQ3NDgzNjQ3HQ==</validators>
+                      <defaultValue>1</defaultValue>
+                    </field>
+                    <field description="Row Span" name="gridHeight" type="I">
+                      <validators contentType="base64">HEweMSAyMTQ3NDgzNjQ3HQ==</validators>
+                      <defaultValue>1</defaultValue>
+                    </field>
+                    <field description="Content Overflow" name="overflow" type="S">
+                      <selectionValues>
+                        <option description="Auto">auto</option>
+                        <option description="Hidden">hidden</option>
+                        <option description="Scroll">scroll</option>
+                        <option description="Unset">unset</option>
+                        <option description="Visible">visible</option>
+                      </selectionValues>
+                      <defaultValue>auto</defaultValue>
+                    </field>
+                    <field description="Visible" name="visible" type="B">
+                      <defaultValue>1</defaultValue>
+                    </field>
+                    <field description="Custom Classes" name="customClasses" type="S">
+                      <defaultValue/>
+                    </field>
+                    <field description="Element CSS Style" editor="code" name="style" nullable="true" type="S">
+                      <editorOptions>scss</editorOptions>
+                      <defaultValue>
+                        <nullValue/>
+                      </defaultValue>
+                    </field>
+                    <field description="Breakpoints" name="gridBreakpoints" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="visibleChildren" name="visibleChildren" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Container Style" editor="code" name="containerStyle" nullable="true" type="S">
+                      <editorOptions>scss</editorOptions>
+                      <defaultValue>
+                        <nullValue/>
+                      </defaultValue>
+                    </field>
+                    <field description="Class Name" name="preloaderClass" type="S">
+                      <defaultValue/>
+                    </field>
+                    <field description="Text" name="preloaderText" type="S">
+                      <defaultValue/>
+                    </field>
+                    <field description="Visible" name="preloaderVisible" type="B">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Icon" name="preloaderIcon" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Component Bindings " name="componentBindings" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Empty Chart Text" name="emptyChartText" type="S">
+                      <defaultValue>No Data</defaultValue>
+                    </field>
+                    <field description="Series Color" name="seriesColor" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Tooltip Description" name="tooltipDescription" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Source Data" name="sourceData" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Source Data Bindings" name="dataBindings" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Inner Radius" name="innerRadius" type="I">
+                      <validators contentType="base64">HEweMCAxMDAd</validators>
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Outer Radius" name="outerRadius" type="I">
+                      <validators contentType="base64">HEweMCAxMDAd</validators>
+                      <defaultValue>90</defaultValue>
+                    </field>
+                    <field description="Start Angle" name="startAngle" type="I">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="End Angle" name="endAngle" type="I">
+                      <defaultValue>360</defaultValue>
+                    </field>
+                    <field description="Label Type" name="labelType" type="S">
+                      <selectionValues>
+                        <option description="Inner">inner</option>
+                        <option description="Outer">outer</option>
+                        <option description="Spider">spider</option>
+                      </selectionValues>
+                      <defaultValue>outer</defaultValue>
+                    </field>
+                    <field description="Label Fill" name="labelColor" type="S">
+                      <defaultValue>darkslategray</defaultValue>
+                    </field>
+                    <field description="Show Legend" name="showLegend" type="B">
+                      <defaultValue>1</defaultValue>
+                    </field>
+                    <field description="Legend Position" name="legendPosition" type="S">
+                      <selectionValues>
+                        <option description="Top">top</option>
+                        <option description="Top Left">top-left</option>
+                        <option description="Top Right">top-right</option>
+                        <option description="Left">left</option>
+                        <option description="Left Top">left-top</option>
+                        <option description="Left Bottom">left-bottom</option>
+                        <option description="Right">right</option>
+                        <option description="Right Top">right-top</option>
+                        <option description="Right Bottom">right-bottom</option>
+                        <option description="Bottom">bottom</option>
+                        <option description="Bottom Left">bottom-left</option>
+                        <option description="Bottom Right">bottom-right</option>
+                      </selectionValues>
+                      <defaultValue>bottom</defaultValue>
+                    </field>
+                    <field description="Language" name="lang" type="S">
+                      <selectionValues>
+                        <option description="Auto">auto</option>
+                        <option description="English">en</option>
+                        <option description="Russian">ru</option>
+                        <option description="Spanish">es</option>
+                      </selectionValues>
+                      <defaultValue>auto</defaultValue>
+                    </field>
+                    <field description="Animated" name="enableAnimations" type="B">
+                      <defaultValue>1</defaultValue>
+                    </field>
+                  </fields>
+                </format>
+                <records>
+                  <record>
+                    <value name="name">pieChart0</value>
+                    <value name="gridx">1</value>
+                    <value name="gridy">2</value>
+                    <value name="gridWidth">4</value>
+                    <value name="style"/>
+                    <value name="gridBreakpoints">
+                      <table>
+                        <format maxRecords="2147483647">
+                          <fields>
+                            <field description="Breakpoint" name="breakpoint" nullable="true" type="S">
+                              <defaultValue>default</defaultValue>
+                            </field>
+                            <field description="Style" name="style" nullable="true" type="S">
+                              <defaultValue>
+                                <nullValue/>
+                              </defaultValue>
+                            </field>
+                            <field description="Container Style" name="containerStyle" nullable="true" type="S">
+                              <defaultValue>
+                                <nullValue/>
+                              </defaultValue>
+                            </field>
+                          </fields>
+                        </format>
+                        <records>
+                          <record>
+                            <value name="breakpoint">fullHD</value>
+                            <value name="style"/>
+                            <value name="containerStyle">order-id:0*~*active:false*~*gridx:1*~*gridy:2*~*grid-width:4*~*grid-height:1*~*overflow:auto*~*</value>
+                          </record>
+                        </records>
+                      </table>
+                    </value>
+                    <value name="visibleChildren">
+                      <table>
+                        <format maxRecords="2147483647">
+                          <fields>
+                            <field name="path" type="S">
+                              <defaultValue/>
+                            </field>
+                          </fields>
+                        </format>
+                      </table>
+                    </value>
+                    <value name="containerStyle"/>
+                    <value name="preloaderIcon">
+                      <table>
+                        <format maxRecords="1" minRecords="1">
+                          <fields>
+                            <field description="Type" name="imageType" type="I">
+                              <selectionValues>
+                                <option description="Data">0</option>
+                                <option description="Url">1</option>
+                              </selectionValues>
+                              <defaultValue>0</defaultValue>
+                            </field>
+                            <field description="Image Data" name="imageData" type="A">
+                              <defaultValue>
+                                <data>
+                                  <nullValue/>
+                                </data>
+                              </defaultValue>
+                            </field>
+                            <field description="Image URL" name="imageUrl" type="S">
+                              <defaultValue/>
+                            </field>
+                          </fields>
+                        </format>
+                      </table>
+                    </value>
+                    <value name="seriesColor">
+                      <table>
+                        <format maxRecords="2147483647">
+                          <fields>
+                            <field description="Series" name="series" type="S">
+                              <defaultValue/>
+                            </field>
+                            <field description="Color" name="color" type="S">
+                              <defaultValue/>
+                            </field>
+                          </fields>
+                        </format>
+                      </table>
+                    </value>
+                    <value name="tooltipDescription">
+                      <table>
+                        <format maxRecords="2147483647">
+                          <fields>
+                            <field description="Series" name="series" type="S">
+                              <defaultValue/>
+                            </field>
+                            <field description="Description" name="description" type="S">
+                              <defaultValue/>
+                            </field>
+                          </fields>
+                        </format>
+                      </table>
+                    </value>
+                    <value name="sourceData">
+                      <table>
+                        <format maxRecords="2147483647">
+                          <fields>
+                            <field description="Series" name="series" type="S">
+                              <defaultValue/>
+                            </field>
+                            <field description="Value" name="value" nullable="true" type="E">
+                              <defaultValue>
+                                <nullValue/>
+                              </defaultValue>
+                            </field>
+                          </fields>
+                        </format>
+                        <records>
+                          <record>
+                            <value name="series">January</value>
+                            <value name="value">21.0</value>
+                          </record>
+                          <record>
+                            <value name="series">February</value>
+                            <value name="value">37.0</value>
+                          </record>
+                          <record>
+                            <value name="series">March</value>
+                            <value name="value">12.0</value>
+                          </record>
+                          <record>
+                            <value name="series">April</value>
+                            <value name="value">9.0</value>
+                          </record>
+                          <record>
+                            <value name="series">May</value>
+                            <value name="value">6.0</value>
+                          </record>
+                          <record>
+                            <value name="series">June</value>
+                            <value name="value">3.0</value>
+                          </record>
+                          <record>
+                            <value name="series">July</value>
+                            <value name="value">7.0</value>
+                          </record>
+                          <record>
+                            <value name="series">August</value>
+                            <value name="value">5.0</value>
+                          </record>
+                        </records>
+                      </table>
+                    </value>
+                    <value name="dataBindings">
+                      <table>
+                        <format maxRecords="2147483647">
+                          <fields>
+                            <field description="Series" editor="expression" name="series" type="S">
+                              <editorOptions contentType="base64">HEYeHBxjb250ZXh0HRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IENvbnRleHQdHRwcdGFibGUdHFQdHEYeTh0cQR4aHRxEHkRlZmF1bHQgVGFibGUdHRwccmVmZXJlbmNlcx0cVB0cRh5OHRxBHhxGHhwccmVmZXJlbmNlHRxTHRxBHh0cRB5SZWZlcmVuY2UdHRwcZGVzY3JpcHRpb24dHFMdHEEeHRxEHkRlc2NyaXB0aW9uHR0dHRxEHlJlZmVyZW5jZXMdHRwcZXhwZWN0ZWRSZXN1bHQdHFMdHEYeTh0cQR4aHRxEHkV4cGVjdGVkIFJlc3VsdB0dHBxjb250ZXh0RGVzY3JpcHRpb24dHFMdHEYeTh0cQR4aHRxEHkRlZmF1bHQgQ29udGV4dCBEZXNjcmlwdGlvbh0dHBx0YWJsZURlc2NyaXB0aW9uHRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IFRhYmxlIERlc2NyaXB0aW9uHR0cTR4xHRxYHjEdHRxSHhwdHBxGHh0dHBodHBodHBodHBodHQ==</editorOptions>
+                              <defaultValue/>
+                            </field>
+                            <field description="Value" editor="expression" name="value" type="S">
+                              <editorOptions contentType="base64">HEYeHBxjb250ZXh0HRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IENvbnRleHQdHRwcdGFibGUdHFQdHEYeTh0cQR4aHRxEHkRlZmF1bHQgVGFibGUdHRwccmVmZXJlbmNlcx0cVB0cRh5OHRxBHhxGHhwccmVmZXJlbmNlHRxTHRxBHh0cRB5SZWZlcmVuY2UdHRwcZGVzY3JpcHRpb24dHFMdHEEeHRxEHkRlc2NyaXB0aW9uHR0dHRxEHlJlZmVyZW5jZXMdHRwcZXhwZWN0ZWRSZXN1bHQdHFMdHEYeTh0cQR4aHRxEHkV4cGVjdGVkIFJlc3VsdB0dHBxjb250ZXh0RGVzY3JpcHRpb24dHFMdHEYeTh0cQR4aHRxEHkRlZmF1bHQgQ29udGV4dCBEZXNjcmlwdGlvbh0dHBx0YWJsZURlc2NyaXB0aW9uHRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IFRhYmxlIERlc2NyaXB0aW9uHR0cTR4xHRxYHjEdHRxSHhwdHBxGHh0dHBodHBodHBodHBodHQ==</editorOptions>
+                              <defaultValue/>
+                            </field>
+                          </fields>
+                        </format>
+                        <records>
+                          <record>
+                            <value name="series">{series}</value>
+                            <value name="value">{value}</value>
+                          </record>
+                        </records>
+                      </table>
+                    </value>
+                    <value name="showLegend">0</value>
+                  </record>
+                </records>
+              </table>
+            </value>
+          </record>
+          <record>
+            <value name="name">lineChart0</value>
+            <value name="type">lineChart</value>
+            <value name="parameters">
+              <table>
+                <format maxRecords="1" minRecords="1">
+                  <fields>
+                    <field description="Name" name="name" nullable="true" type="S">
+                      <validators contentType="base64">HFIeXHcrXl5OYW1lIG1heSBjb250YWluIG9ubHkgTGF0aW4gbGV0dGVycywgZGlnaXRzLCBhbmQgdW5kZXJzY29yZXMd</validators>
+                      <defaultValue>
+                        <nullValue/>
+                      </defaultValue>
+                    </field>
+                    <field description="Tab ID" name="tabId" type="S">
+                      <defaultValue/>
+                    </field>
+                    <field description="Panel ID" name="panelId" type="S">
+                      <defaultValue/>
+                    </field>
+                    <field description="Order ID" name="orderId" type="I">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Active" name="active" type="B">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Column" name="gridx" type="I">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Row" name="gridy" type="I">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Column Span" name="gridWidth" type="I">
+                      <validators contentType="base64">HEweMSAyMTQ3NDgzNjQ3HQ==</validators>
+                      <defaultValue>1</defaultValue>
+                    </field>
+                    <field description="Row Span" name="gridHeight" type="I">
+                      <validators contentType="base64">HEweMSAyMTQ3NDgzNjQ3HQ==</validators>
+                      <defaultValue>1</defaultValue>
+                    </field>
+                    <field description="Content Overflow" name="overflow" type="S">
+                      <selectionValues>
+                        <option description="Auto">auto</option>
+                        <option description="Hidden">hidden</option>
+                        <option description="Scroll">scroll</option>
+                        <option description="Unset">unset</option>
+                        <option description="Visible">visible</option>
+                      </selectionValues>
+                      <defaultValue>auto</defaultValue>
+                    </field>
+                    <field description="Visible" name="visible" type="B">
+                      <defaultValue>1</defaultValue>
+                    </field>
+                    <field description="Custom Classes" name="customClasses" type="S">
+                      <defaultValue/>
+                    </field>
+                    <field description="Element CSS Style" editor="code" name="style" nullable="true" type="S">
+                      <editorOptions>scss</editorOptions>
+                      <defaultValue>
+                        <nullValue/>
+                      </defaultValue>
+                    </field>
+                    <field description="Breakpoints" name="gridBreakpoints" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="visibleChildren" name="visibleChildren" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Container Style" editor="code" name="containerStyle" nullable="true" type="S">
+                      <editorOptions>scss</editorOptions>
+                      <defaultValue>
+                        <nullValue/>
+                      </defaultValue>
+                    </field>
+                    <field description="Class Name" name="preloaderClass" type="S">
+                      <defaultValue/>
+                    </field>
+                    <field description="Text" name="preloaderText" type="S">
+                      <defaultValue/>
+                    </field>
+                    <field description="Visible" name="preloaderVisible" type="B">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Icon" name="preloaderIcon" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Component Bindings " name="componentBindings" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Empty Chart Text" name="emptyChartText" type="S">
+                      <defaultValue>No Data</defaultValue>
+                    </field>
+                    <field description="Series Color" name="seriesColor" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Tooltip Description" name="tooltipDescription" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Label Enable" name="leftLabelEnable" type="B">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Label Offset" name="leftLabelOffset" type="I">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Label Value" name="leftLabelValue" nullable="true" type="S">
+                      <defaultValue>
+                        <nullValue/>
+                      </defaultValue>
+                    </field>
+                    <field description="Label Fill" name="leftLabelFill" nullable="true" type="S">
+                      <defaultValue>
+                        <nullValue/>
+                      </defaultValue>
+                    </field>
+                    <field description="Label Font Size" name="leftLabelFontSize" type="E">
+                      <defaultValue>0.0</defaultValue>
+                    </field>
+                    <field description="Label Enable" name="bottomLabelEnable" type="B">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Label Offset" name="bottomLabelOffset" type="I">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Label Value" name="bottomLabelValue" nullable="true" type="S">
+                      <defaultValue>
+                        <nullValue/>
+                      </defaultValue>
+                    </field>
+                    <field description="Label Fill" name="bottomLabelFill" nullable="true" type="S">
+                      <defaultValue>
+                        <nullValue/>
+                      </defaultValue>
+                    </field>
+                    <field description="Label Font Size" name="bottomLabelFontSize" type="E">
+                      <defaultValue>0.0</defaultValue>
+                    </field>
+                    <field description="Axis Label Shift" name="axisLabelShiftY" type="I">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Axis Label Shift" name="axisLabelShiftX" type="I">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Axis Fill Color" name="axisFillY" type="S">
+                      <defaultValue/>
+                    </field>
+                    <field description="Axis Fill Color" name="axisFillX" type="S">
+                      <defaultValue/>
+                    </field>
+                    <field description="Axis Font Size" name="axisFontSizeY" type="S">
+                      <defaultValue/>
+                    </field>
+                    <field description="Axis Font Size" name="axisFontSizeX" type="S">
+                      <defaultValue/>
+                    </field>
+                    <field description="Date and Time Format" name="dateTimeFormat" type="S">
+                      <defaultValue>HH:mm:ss</defaultValue>
+                    </field>
+                    <field description="Tooltip Date and Time Format" name="tooltipDateTimeFormat" type="S">
+                      <defaultValue>HH:mm:ss</defaultValue>
+                    </field>
+                    <field description="Axis Domain" name="axisDomainX" type="S">
+                      <selectionValues>
+                        <option description="Auto">auto</option>
+                        <option description="Optimize">optimized</option>
+                        <option description="Custom Values">custom</option>
+                      </selectionValues>
+                      <defaultValue>auto</defaultValue>
+                    </field>
+                    <field description="Axis Custom Domain" name="axisDomainCustomX" type="S">
+                      <defaultValue>auto, auto</defaultValue>
+                    </field>
+                    <field description="Axis Domain" name="axisDomainY" type="S">
+                      <selectionValues>
+                        <option description="Auto">auto</option>
+                        <option description="Optimize">optimized</option>
+                        <option description="Custom Values">custom</option>
+                      </selectionValues>
+                      <defaultValue>auto</defaultValue>
+                    </field>
+                    <field description="Axis Custom Domain" name="axisDomainCustomY" type="S">
+                      <defaultValue>auto, auto</defaultValue>
+                    </field>
+                    <field description="Show Legend" name="showLegend" type="B">
+                      <defaultValue>1</defaultValue>
+                    </field>
+                    <field description="Legend Position" name="legendPosition" type="S">
+                      <selectionValues>
+                        <option description="Top">top</option>
+                        <option description="Top Left">top-left</option>
+                        <option description="Top Right">top-right</option>
+                        <option description="Left">left</option>
+                        <option description="Left Top">left-top</option>
+                        <option description="Left Bottom">left-bottom</option>
+                        <option description="Right">right</option>
+                        <option description="Right Top">right-top</option>
+                        <option description="Right Bottom">right-bottom</option>
+                        <option description="Bottom">bottom</option>
+                        <option description="Bottom Left">bottom-left</option>
+                        <option description="Bottom Right">bottom-right</option>
+                      </selectionValues>
+                      <defaultValue>bottom</defaultValue>
+                    </field>
+                    <field description="Chart Padding" name="chartPadding" nullable="true" type="I">
+                      <defaultValue>
+                        <nullValue/>
+                      </defaultValue>
+                    </field>
+                    <field description="Zoomable" name="zoomable" type="B">
+                      <defaultValue>1</defaultValue>
+                    </field>
+                    <field description="Zoom Type" name="zoomType" type="S">
+                      <selectionValues>
+                        <option description="Mouse Wheel">mouseWheel</option>
+                        <option description="Zoom Buttons">zoomButtons</option>
+                        <option description="Range Slider">brush</option>
+                        <option description="Brush">selectZoom</option>
+                      </selectionValues>
+                      <defaultValue>mouseWheel</defaultValue>
+                    </field>
+                    <field description="Zoom In Button" name="zoomInButton" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Zoom Out Button" name="zoomOutButton" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Disable Slider Preview" name="disableSliderPreview" type="B">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Default Zoom Range" name="defaultZoomRange" nullable="true" type="F">
+                      <validators contentType="base64">HEweMC4wIDEuMB0=</validators>
+                      <defaultValue>0.0</defaultValue>
+                    </field>
+                    <field description="Delay of zoom event " editor="period" name="zoomEventDebounceDelay" type="L">
+                      <editorOptions>0 0</editorOptions>
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Button Container Style" editor="code" name="buttonContainerStyle" type="S">
+                      <editorOptions>scss</editorOptions>
+                      <defaultValue/>
+                    </field>
+                    <field description="Data Source Type" name="sourceType" type="S">
+                      <selectionValues>
+                        <option description="Event">eventData</option>
+                        <option description="Variable">variableData</option>
+                        <option description="Source Data">sourceData</option>
+                      </selectionValues>
+                      <defaultValue>sourceData</defaultValue>
+                    </field>
+                    <field description="Source Variables" name="variableData" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Source Events" name="eventData" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Include Historical Data" name="useHistoricalData" readonly="true" type="B">
+                      <defaultValue>1</defaultValue>
+                    </field>
+                    <field description="Limit Time Range" name="limitTimeRange" type="S">
+                      <selectionValues>
+                        <option description="Full History">fullHistory</option>
+                        <option description="Last Values">lastValues</option>
+                        <option description="Date Range">dateRange</option>
+                      </selectionValues>
+                      <defaultValue>fullHistory</defaultValue>
+                    </field>
+                    <field description="Time Range" editor="period" name="timeRange" type="L">
+                      <editorOptions>1</editorOptions>
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Start Date" name="startDate" nullable="true" type="D">
+                      <defaultValue>
+                        <nullValue/>
+                      </defaultValue>
+                    </field>
+                    <field description="End Date" name="endDate" nullable="true" type="D">
+                      <defaultValue>
+                        <nullValue/>
+                      </defaultValue>
+                    </field>
+                    <field description="Aggregation Time Period" name="aggregateTimePeriod" type="S">
+                      <selectionValues>
+                        <option description="Millisecond">millisecond</option>
+                        <option description="Second">second</option>
+                        <option description="Minute">minute</option>
+                        <option description="Hour">hour</option>
+                        <option description="Day">day</option>
+                        <option description="Week">week</option>
+                        <option description="Month">month</option>
+                        <option description="Quarter">quarter</option>
+                        <option description="Year">year</option>
+                      </selectionValues>
+                      <defaultValue>minute</defaultValue>
+                    </field>
+                    <field description="Source Data" name="sourceData" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Source Data Bindings" name="dataBindings" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Sync ID" name="syncId" type="S">
+                      <defaultValue/>
+                    </field>
+                    <field description="Show X Axis Label" name="showXAxisLabel" type="B">
+                      <defaultValue>1</defaultValue>
+                    </field>
+                    <field description="Show Y Axis Label" name="showYAxisLabel" type="B">
+                      <defaultValue>1</defaultValue>
+                    </field>
+                    <field description="Stroke" name="stroke" type="I">
+                      <defaultValue>1</defaultValue>
+                    </field>
+                    <field description="Line Stroke Width" name="lineStrokeWidth" type="I">
+                      <defaultValue>2</defaultValue>
+                    </field>
+                    <field description="Disable Dots" name="disableDots" type="B">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Dot Size" name="dotSize" type="I">
+                      <defaultValue>4</defaultValue>
+                    </field>
+                    <field description="Dot Fill Color" name="dotFill" type="S">
+                      <defaultValue/>
+                    </field>
+                    <field description="Axis Render Type" name="metricTypeX" type="S">
+                      <selectionValues>
+                        <option description="auto">auto</option>
+                        <option description="linear">linear</option>
+                        <option description="log">log</option>
+                        <option description="pow">pow</option>
+                        <option description="time">time</option>
+                        <option description="quantize">quantize</option>
+                        <option description="quantile">quantile</option>
+                        <option description="cat">cat</option>
+                        <option description="timeCat">timeCat</option>
+                        <option description="identity">identity</option>
+                      </selectionValues>
+                      <defaultValue>auto</defaultValue>
+                    </field>
+                    <field description="Tick render method" name="tickMethodX" type="S">
+                      <selectionValues>
+                        <option description="auto">auto</option>
+                        <option description="wilkinson-extended">wilkinson-extended</option>
+                        <option description="r-pretty">r-pretty</option>
+                        <option description="time">time</option>
+                        <option description="time-pretty">time-pretty</option>
+                        <option description="log">log</option>
+                        <option description="pow">pow</option>
+                        <option description="quantile">quantile</option>
+                      </selectionValues>
+                      <defaultValue>auto</defaultValue>
+                    </field>
+                    <field description="Axis Render Type" name="metricTypeY" type="S">
+                      <selectionValues>
+                        <option description="auto">auto</option>
+                        <option description="linear">linear</option>
+                        <option description="log">log</option>
+                        <option description="pow">pow</option>
+                        <option description="time">time</option>
+                        <option description="quantize">quantize</option>
+                        <option description="quantile">quantile</option>
+                        <option description="cat">cat</option>
+                        <option description="timeCat">timeCat</option>
+                        <option description="identity">identity</option>
+                      </selectionValues>
+                      <defaultValue>auto</defaultValue>
+                    </field>
+                    <field description="Tick render method" name="tickMethodY" type="S">
+                      <selectionValues>
+                        <option description="auto">auto</option>
+                        <option description="wilkinson-extended">wilkinson-extended</option>
+                        <option description="r-pretty">r-pretty</option>
+                        <option description="time">time</option>
+                        <option description="time-pretty">time-pretty</option>
+                        <option description="log">log</option>
+                        <option description="pow">pow</option>
+                        <option description="quantile">quantile</option>
+                      </selectionValues>
+                      <defaultValue>auto</defaultValue>
+                    </field>
+                    <field description="Pass null" name="passNullsType" type="S">
+                      <selectionValues>
+                        <option description="Pass">pass</option>
+                        <option description="Dotted">dotted</option>
+                        <option description="Line">lined</option>
+                      </selectionValues>
+                      <defaultValue>pass</defaultValue>
+                    </field>
+                    <field description="Compress Ratio" name="compressRatios" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Smooth" name="smooth" type="B">
+                      <defaultValue>1</defaultValue>
+                    </field>
+                    <field description="Language" name="lang" type="S">
+                      <selectionValues>
+                        <option description="Auto">auto</option>
+                        <option description="English">en</option>
+                        <option description="Russian">ru</option>
+                        <option description="Spanish">es</option>
+                      </selectionValues>
+                      <defaultValue>auto</defaultValue>
+                    </field>
+                    <field description="Grid Line Opacity" name="gridLineStyleOpacityX" type="F">
+                      <validators contentType="base64">HEweMC4wIDEuMB0=</validators>
+                      <defaultValue>0.5</defaultValue>
+                    </field>
+                    <field description="Grid Line Opacity" name="gridLineStyleOpacityY" type="F">
+                      <validators contentType="base64">HEweMC4wIDEuMB0=</validators>
+                      <defaultValue>0.5</defaultValue>
+                    </field>
+                    <field description="Auto Load Dataset" name="autoLoadDataset" type="B">
+                      <defaultValue>1</defaultValue>
+                    </field>
+                  </fields>
+                </format>
+                <records>
+                  <record>
+                    <value name="name">lineChart0</value>
+                    <value name="gridx">1</value>
+                    <value name="gridy">3</value>
+                    <value name="gridWidth">12</value>
+                    <value name="style"/>
+                    <value name="gridBreakpoints">
+                      <table>
+                        <format maxRecords="2147483647">
+                          <fields>
+                            <field description="Breakpoint" name="breakpoint" nullable="true" type="S">
+                              <defaultValue>default</defaultValue>
+                            </field>
+                            <field description="Style" name="style" nullable="true" type="S">
+                              <defaultValue>
+                                <nullValue/>
+                              </defaultValue>
+                            </field>
+                            <field description="Container Style" name="containerStyle" nullable="true" type="S">
+                              <defaultValue>
+                                <nullValue/>
+                              </defaultValue>
+                            </field>
+                          </fields>
+                        </format>
+                        <records>
+                          <record>
+                            <value name="breakpoint">fullHD</value>
+                            <value name="style"/>
+                            <value name="containerStyle">order-id:0*~*active:false*~*gridx:1*~*gridy:3*~*grid-width:12*~*grid-height:1*~*overflow:auto*~*</value>
+                          </record>
+                        </records>
+                      </table>
+                    </value>
+                    <value name="visibleChildren">
+                      <table>
+                        <format maxRecords="2147483647">
+                          <fields>
+                            <field name="path" type="S">
+                              <defaultValue/>
+                            </field>
+                          </fields>
+                        </format>
+                      </table>
+                    </value>
+                    <value name="containerStyle"/>
+                    <value name="preloaderIcon">
+                      <table>
+                        <format maxRecords="1" minRecords="1">
+                          <fields>
+                            <field description="Type" name="imageType" type="I">
+                              <selectionValues>
+                                <option description="Data">0</option>
+                                <option description="Url">1</option>
+                              </selectionValues>
+                              <defaultValue>0</defaultValue>
+                            </field>
+                            <field description="Image Data" name="imageData" type="A">
+                              <defaultValue>
+                                <data>
+                                  <nullValue/>
+                                </data>
+                              </defaultValue>
+                            </field>
+                            <field description="Image URL" name="imageUrl" type="S">
+                              <defaultValue/>
+                            </field>
+                          </fields>
+                        </format>
+                      </table>
+                    </value>
+                    <value name="seriesColor">
+                      <table>
+                        <format maxRecords="2147483647">
+                          <fields>
+                            <field description="Series" name="series" type="S">
+                              <defaultValue/>
+                            </field>
+                            <field description="Color" name="color" type="S">
+                              <defaultValue/>
+                            </field>
+                          </fields>
+                        </format>
+                      </table>
+                    </value>
+                    <value name="tooltipDescription">
+                      <table>
+                        <format maxRecords="2147483647">
+                          <fields>
+                            <field description="Category" name="category" type="S">
+                              <defaultValue/>
+                            </field>
+                            <field description="Description" name="description" type="S">
+                              <defaultValue/>
+                            </field>
+                          </fields>
+                        </format>
+                      </table>
+                    </value>
+                    <value name="leftLabelOffset">5</value>
+                    <value name="leftLabelValue"/>
+                    <value name="leftLabelFill"/>
+                    <value name="leftLabelFontSize">13.2</value>
+                    <value name="bottomLabelValue"/>
+                    <value name="bottomLabelFill"/>
+                    <value name="bottomLabelFontSize">13.2</value>
+                    <value name="axisLabelShiftY">10</value>
+                    <value name="axisLabelShiftX">10</value>
+                    <value name="showLegend">0</value>
+                    <value name="zoomInButton">
+                      <table>
+                        <format maxRecords="1" minRecords="1">
+                          <fields>
+                            <field description="Value" name="buttonValue" type="S">
+                              <defaultValue>+</defaultValue>
+                            </field>
+                            <field description="Style" name="buttonCss" type="S">
+                              <defaultValue/>
+                            </field>
+                          </fields>
+                        </format>
+                        <records>
+                          <record/>
+                        </records>
+                      </table>
+                    </value>
+                    <value name="zoomOutButton">
+                      <table>
+                        <format maxRecords="1" minRecords="1">
+                          <fields>
+                            <field description="Value" name="buttonValue" type="S">
+                              <defaultValue>-</defaultValue>
+                            </field>
+                            <field description="Style" name="buttonCss" type="S">
+                              <defaultValue/>
+                            </field>
+                          </fields>
+                        </format>
+                        <records>
+                          <record/>
+                        </records>
+                      </table>
+                    </value>
+                    <value name="zoomEventDebounceDelay">500</value>
+                    <value name="variableData">
+                      <table>
+                        <format maxRecords="2147483647">
+                          <fields>
+                            <field description="Name" name="sourceVariablesName" type="S">
+                              <defaultValue/>
+                            </field>
+                            <field description="Context" editor="context" name="sourceVariablesContext" type="S">
+                              <defaultValue/>
+                            </field>
+                            <field description="Variable" name="sourceVariablesVariable" type="S">
+                              <defaultValue/>
+                            </field>
+                            <field description="Expression" editor="expression" name="sourceVariablesExpression" type="S">
+                              <editorOptions contentType="base64">HEYeHBxjb250ZXh0HRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IENvbnRleHQdHRwcdGFibGUdHFQdHEYeTh0cQR4aHRxEHkRlZmF1bHQgVGFibGUdHRwccmVmZXJlbmNlcx0cVB0cRh5OHRxBHhxGHhwccmVmZXJlbmNlHRxTHRxBHh0cRB5SZWZlcmVuY2UdHRwcZGVzY3JpcHRpb24dHFMdHEEeHRxEHkRlc2NyaXB0aW9uHR0dHRxEHlJlZmVyZW5jZXMdHRwcZXhwZWN0ZWRSZXN1bHQdHFMdHEYeTh0cQR4aHRxEHkV4cGVjdGVkIFJlc3VsdB0dHBxjb250ZXh0RGVzY3JpcHRpb24dHFMdHEYeTh0cQR4aHRxEHkRlZmF1bHQgQ29udGV4dCBEZXNjcmlwdGlvbh0dHBx0YWJsZURlc2NyaXB0aW9uHRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IFRhYmxlIERlc2NyaXB0aW9uHR0cTR4xHRxYHjEdHRxSHhwdHBxGHh0dHBodHBodHBodHBodHQ==</editorOptions>
+                              <help>An expression that is evaluated every time the binding is processed. Its evaluation result is stored in binding Target.</help>
+                              <defaultValue/>
+                            </field>
+                            <field description="Custom Timestamp Expression" editor="expression" name="sourceVariablesCustomTimeStampExpression" type="S">
+                              <editorOptions contentType="base64">HEYeHBxjb250ZXh0HRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IENvbnRleHQdHRwcdGFibGUdHFQdHEYeTh0cQR4aHRxEHkRlZmF1bHQgVGFibGUdHRwccmVmZXJlbmNlcx0cVB0cRh5OHRxBHhxGHhwccmVmZXJlbmNlHRxTHRxBHh0cRB5SZWZlcmVuY2UdHRwcZGVzY3JpcHRpb24dHFMdHEEeHRxEHkRlc2NyaXB0aW9uHR0dHRxEHlJlZmVyZW5jZXMdHRwcZXhwZWN0ZWRSZXN1bHQdHFMdHEYeTh0cQR4aHRxEHkV4cGVjdGVkIFJlc3VsdB0dHBxjb250ZXh0RGVzY3JpcHRpb24dHFMdHEYeTh0cQR4aHRxEHkRlZmF1bHQgQ29udGV4dCBEZXNjcmlwdGlvbh0dHBx0YWJsZURlc2NyaXB0aW9uHRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IFRhYmxlIERlc2NyaXB0aW9uHR0cTR4xHRxYHjEdHRxSHhwdHBxGHh0dHBodHBodHBodHBodHQ==</editorOptions>
+                              <help>An expression that is evaluated every time the binding is processed. Its evaluation result is stored in binding Target.</help>
+                              <defaultValue/>
+                            </field>
+                            <field description="Propagate" name="sourceVariablesPropagate" type="B">
+                              <defaultValue>0</defaultValue>
+                            </field>
+                            <field description="Aggregation" name="sourceVariablesAggregation" type="S">
+                              <selectionValues>
+                                <option description="Average">average</option>
+                                <option description="Minimum">minimum</option>
+                                <option description="Maximum">maximum</option>
+                                <option description="Summation">summation</option>
+                                <option description="First">fist</option>
+                                <option description="Last">last</option>
+                              </selectionValues>
+                              <defaultValue>average</defaultValue>
+                            </field>
+                            <field description="Type" name="sourceVariablesType" type="S">
+                              <selectionValues>
+                                <option description="Gauge">gauge</option>
+                                <option description="Counter">counter</option>
+                                <option description="Derive">derive</option>
+                                <option description="Absolute">absolute</option>
+                              </selectionValues>
+                              <defaultValue>gauge</defaultValue>
+                            </field>
+                          </fields>
+                          <bindings>
+                            <binding>
+                              <reference>sourceVariablesExpression#options</reference>
+                              <expression>expressionEditorOptions(absolute({sourceVariablesContext}), {sourceVariablesVariable}, 1)</expression>
+                            </binding>
+                            <binding>
+                              <reference>sourceVariablesVariable#choices</reference>
+                              <expression>{utilities:variablesByMask(&apos;{sourceVariablesContext}&apos;)}</expression>
+                            </binding>
+                          </bindings>
+                        </format>
+                      </table>
+                    </value>
+                    <value name="eventData">
+                      <table>
+                        <format maxRecords="2147483647">
+                          <fields>
+                            <field description="Name" name="eventDataName" type="S">
+                              <defaultValue/>
+                            </field>
+                            <field description="Context" editor="context" name="eventDataContext" type="S">
+                              <defaultValue/>
+                            </field>
+                            <field description="Event" name="eventDataEvent" type="S">
+                              <defaultValue/>
+                            </field>
+                            <field description="Expression" editor="expression" name="eventDataExpression" type="S">
+                              <editorOptions contentType="base64">HEYeHBxjb250ZXh0HRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IENvbnRleHQdHRwcdGFibGUdHFQdHEYeTh0cQR4aHRxEHkRlZmF1bHQgVGFibGUdHRwccmVmZXJlbmNlcx0cVB0cRh5OHRxBHhxGHhwccmVmZXJlbmNlHRxTHRxBHh0cRB5SZWZlcmVuY2UdHRwcZGVzY3JpcHRpb24dHFMdHEEeHRxEHkRlc2NyaXB0aW9uHR0dHRxEHlJlZmVyZW5jZXMdHRwcZXhwZWN0ZWRSZXN1bHQdHFMdHEYeTh0cQR4aHRxEHkV4cGVjdGVkIFJlc3VsdB0dHBxjb250ZXh0RGVzY3JpcHRpb24dHFMdHEYeTh0cQR4aHRxEHkRlZmF1bHQgQ29udGV4dCBEZXNjcmlwdGlvbh0dHBx0YWJsZURlc2NyaXB0aW9uHRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IFRhYmxlIERlc2NyaXB0aW9uHR0cTR4xHRxYHjEdHRxSHhwdHBxGHh0dHBodHBodHBodHBodHQ==</editorOptions>
+                              <help>An expression that is evaluated every time the binding is processed. Its evaluation result is stored in binding Target.</help>
+                              <defaultValue/>
+                            </field>
+                            <field description="Custom Timestamp Expression" editor="expression" name="eventDataCustomTimeStampExpression" type="S">
+                              <editorOptions contentType="base64">HEYeHBxjb250ZXh0HRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IENvbnRleHQdHRwcdGFibGUdHFQdHEYeTh0cQR4aHRxEHkRlZmF1bHQgVGFibGUdHRwccmVmZXJlbmNlcx0cVB0cRh5OHRxBHhxGHhwccmVmZXJlbmNlHRxTHRxBHh0cRB5SZWZlcmVuY2UdHRwcZGVzY3JpcHRpb24dHFMdHEEeHRxEHkRlc2NyaXB0aW9uHR0dHRxEHlJlZmVyZW5jZXMdHRwcZXhwZWN0ZWRSZXN1bHQdHFMdHEYeTh0cQR4aHRxEHkV4cGVjdGVkIFJlc3VsdB0dHBxjb250ZXh0RGVzY3JpcHRpb24dHFMdHEYeTh0cQR4aHRxEHkRlZmF1bHQgQ29udGV4dCBEZXNjcmlwdGlvbh0dHBx0YWJsZURlc2NyaXB0aW9uHRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IFRhYmxlIERlc2NyaXB0aW9uHR0cTR4xHRxYHjEdHRxSHhwdHBxGHh0dHBodHBodHBodHBodHQ==</editorOptions>
+                              <help>An expression that is evaluated every time the binding is processed. Its evaluation result is stored in binding Target.</help>
+                              <defaultValue/>
+                            </field>
+                            <field description="Aggregation" name="eventDataAggregation" type="S">
+                              <selectionValues>
+                                <option description="Average">average</option>
+                                <option description="Minimum">minimum</option>
+                                <option description="Maximum">maximum</option>
+                                <option description="Summation">summation</option>
+                                <option description="First">fist</option>
+                                <option description="Last">last</option>
+                              </selectionValues>
+                              <defaultValue>average</defaultValue>
+                            </field>
+                          </fields>
+                          <bindings>
+                            <binding>
+                              <reference>eventDataExpression#options</reference>
+                              <expression>expressionEditorOptions(absolute({eventDataContext}), {eventDataEvent}, 1)</expression>
+                            </binding>
+                            <binding>
+                              <reference>eventDataEvent#choices</reference>
+                              <expression>{utilities:eventsByMask(&apos;{eventDataContext}&apos;)}</expression>
+                            </binding>
+                          </bindings>
+                        </format>
+                      </table>
+                    </value>
+                    <value name="timeRange">1000</value>
+                    <value name="startDate">2023-04-27 12:23:07.982</value>
+                    <value name="endDate">2023-04-27 13:23:07.982</value>
+                    <value name="sourceData">
+                      <table>
+                        <format maxRecords="2147483647">
+                          <fields>
+                            <field description="Series" name="series" type="S">
+                              <defaultValue/>
+                            </field>
+                            <field description="Category" name="category" type="S">
+                              <defaultValue/>
+                            </field>
+                            <field description="Value" name="value" nullable="true" type="E">
+                              <defaultValue>
+                                <nullValue/>
+                              </defaultValue>
+                            </field>
+                          </fields>
+                        </format>
+                        <records>
+                          <record>
+                            <value name="series">Series 1</value>
+                            <value name="category">Category 1</value>
+                            <value name="value">21.0</value>
+                          </record>
+                          <record>
+                            <value name="series">Series 1</value>
+                            <value name="category">Category 2</value>
+                            <value name="value">50.0</value>
+                          </record>
+                          <record>
+                            <value name="series">Series 1</value>
+                            <value name="category">Category 3</value>
+                            <value name="value">152.0</value>
+                          </record>
+                          <record>
+                            <value name="series">Series 1</value>
+                            <value name="category">Category 4</value>
+                            <value name="value">184.0</value>
+                          </record>
+                          <record>
+                            <value name="series">Series 1</value>
+                            <value name="category">Category 5</value>
+                            <value name="value">299.0</value>
+                          </record>
+                          <record>
+                            <value name="series">Series 2</value>
+                            <value name="category">Category 1</value>
+                            <value name="value">275.0</value>
+                          </record>
+                          <record>
+                            <value name="series">Series 2</value>
+                            <value name="category">Category 2</value>
+                            <value name="value">121.0</value>
+                          </record>
+                          <record>
+                            <value name="series">Series 2</value>
+                            <value name="category">Category 3</value>
+                            <value name="value">98.0</value>
+                          </record>
+                          <record>
+                            <value name="series">Series 2</value>
+                            <value name="category">Category 4</value>
+                            <value name="value">103.0</value>
+                          </record>
+                          <record>
+                            <value name="series">Series 2</value>
+                            <value name="category">Category 5</value>
+                            <value name="value">210.0</value>
+                          </record>
+                          <record>
+                            <value name="series">Series 3</value>
+                            <value name="category">Category 1</value>
+                            <value name="value">198.0</value>
+                          </record>
+                          <record>
+                            <value name="series">Series 3</value>
+                            <value name="category">Category 2</value>
+                            <value name="value">165.0</value>
+                          </record>
+                          <record>
+                            <value name="series">Series 3</value>
+                            <value name="category">Category 3</value>
+                            <value name="value">55.0</value>
+                          </record>
+                          <record>
+                            <value name="series">Series 3</value>
+                            <value name="category">Category 4</value>
+                            <value name="value">34.0</value>
+                          </record>
+                          <record>
+                            <value name="series">Series 3</value>
+                            <value name="category">Category 5</value>
+                            <value name="value">77.0</value>
+                          </record>
+                        </records>
+                      </table>
+                    </value>
+                    <value name="dataBindings">
+                      <table>
+                        <format maxRecords="2147483647">
+                          <fields>
+                            <field description="Series" editor="expression" name="series" type="S">
+                              <editorOptions contentType="base64">HEYeHBxjb250ZXh0HRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IENvbnRleHQdHRwcdGFibGUdHFQdHEYeTh0cQR4aHRxEHkRlZmF1bHQgVGFibGUdHRwccmVmZXJlbmNlcx0cVB0cRh5OHRxBHhxGHhwccmVmZXJlbmNlHRxTHRxBHh0cRB5SZWZlcmVuY2UdHRwcZGVzY3JpcHRpb24dHFMdHEEeHRxEHkRlc2NyaXB0aW9uHR0dHRxEHlJlZmVyZW5jZXMdHRwcZXhwZWN0ZWRSZXN1bHQdHFMdHEYeTh0cQR4aHRxEHkV4cGVjdGVkIFJlc3VsdB0dHBxjb250ZXh0RGVzY3JpcHRpb24dHFMdHEYeTh0cQR4aHRxEHkRlZmF1bHQgQ29udGV4dCBEZXNjcmlwdGlvbh0dHBx0YWJsZURlc2NyaXB0aW9uHRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IFRhYmxlIERlc2NyaXB0aW9uHR0cTR4xHRxYHjEdHRxSHhwdHBxGHh0dHBodHBodHBodHBodHQ==</editorOptions>
+                              <defaultValue/>
+                            </field>
+                            <field description="Category" editor="expression" name="category" type="S">
+                              <editorOptions contentType="base64">HEYeHBxjb250ZXh0HRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IENvbnRleHQdHRwcdGFibGUdHFQdHEYeTh0cQR4aHRxEHkRlZmF1bHQgVGFibGUdHRwccmVmZXJlbmNlcx0cVB0cRh5OHRxBHhxGHhwccmVmZXJlbmNlHRxTHRxBHh0cRB5SZWZlcmVuY2UdHRwcZGVzY3JpcHRpb24dHFMdHEEeHRxEHkRlc2NyaXB0aW9uHR0dHRxEHlJlZmVyZW5jZXMdHRwcZXhwZWN0ZWRSZXN1bHQdHFMdHEYeTh0cQR4aHRxEHkV4cGVjdGVkIFJlc3VsdB0dHBxjb250ZXh0RGVzY3JpcHRpb24dHFMdHEYeTh0cQR4aHRxEHkRlZmF1bHQgQ29udGV4dCBEZXNjcmlwdGlvbh0dHBx0YWJsZURlc2NyaXB0aW9uHRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IFRhYmxlIERlc2NyaXB0aW9uHR0cTR4xHRxYHjEdHRxSHhwdHBxGHh0dHBodHBodHBodHBodHQ==</editorOptions>
+                              <defaultValue/>
+                            </field>
+                            <field description="Value" editor="expression" name="value" type="S">
+                              <editorOptions contentType="base64">HEYeHBxjb250ZXh0HRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IENvbnRleHQdHRwcdGFibGUdHFQdHEYeTh0cQR4aHRxEHkRlZmF1bHQgVGFibGUdHRwccmVmZXJlbmNlcx0cVB0cRh5OHRxBHhxGHhwccmVmZXJlbmNlHRxTHRxBHh0cRB5SZWZlcmVuY2UdHRwcZGVzY3JpcHRpb24dHFMdHEEeHRxEHkRlc2NyaXB0aW9uHR0dHRxEHlJlZmVyZW5jZXMdHRwcZXhwZWN0ZWRSZXN1bHQdHFMdHEYeTh0cQR4aHRxEHkV4cGVjdGVkIFJlc3VsdB0dHBxjb250ZXh0RGVzY3JpcHRpb24dHFMdHEYeTh0cQR4aHRxEHkRlZmF1bHQgQ29udGV4dCBEZXNjcmlwdGlvbh0dHBx0YWJsZURlc2NyaXB0aW9uHRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IFRhYmxlIERlc2NyaXB0aW9uHR0cTR4xHRxYHjEdHRxSHhwdHBxGHh0dHBodHBodHBodHBodHQ==</editorOptions>
+                              <defaultValue/>
+                            </field>
+                          </fields>
+                        </format>
+                        <records>
+                          <record>
+                            <value name="series">{series}</value>
+                            <value name="category">{category}</value>
+                            <value name="value">{value}</value>
+                          </record>
+                        </records>
+                      </table>
+                    </value>
+                    <value name="compressRatios">
+                      <table>
+                        <format maxRecords="2147483647">
+                          <fields>
+                            <field description="Series" name="compressRatioSeries" type="S">
+                              <defaultValue/>
+                            </field>
+                            <field description="Value" name="compressRatioValue" type="E">
+                              <defaultValue>0.0</defaultValue>
+                            </field>
+                          </fields>
+                        </format>
+                      </table>
+                    </value>
+                  </record>
+                </records>
+              </table>
+            </value>
+          </record>
+          <record>
+            <value name="name">barChart0</value>
+            <value name="type">barChart</value>
+            <value name="parameters">
+              <table>
+                <format maxRecords="1" minRecords="1">
+                  <fields>
+                    <field description="Name" name="name" nullable="true" type="S">
+                      <validators contentType="base64">HFIeXHcrXl5OYW1lIG1heSBjb250YWluIG9ubHkgTGF0aW4gbGV0dGVycywgZGlnaXRzLCBhbmQgdW5kZXJzY29yZXMd</validators>
+                      <defaultValue>
+                        <nullValue/>
+                      </defaultValue>
+                    </field>
+                    <field description="Tab ID" name="tabId" type="S">
+                      <defaultValue/>
+                    </field>
+                    <field description="Panel ID" name="panelId" type="S">
+                      <defaultValue/>
+                    </field>
+                    <field description="Order ID" name="orderId" type="I">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Active" name="active" type="B">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Column" name="gridx" type="I">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Row" name="gridy" type="I">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Column Span" name="gridWidth" type="I">
+                      <validators contentType="base64">HEweMSAyMTQ3NDgzNjQ3HQ==</validators>
+                      <defaultValue>1</defaultValue>
+                    </field>
+                    <field description="Row Span" name="gridHeight" type="I">
+                      <validators contentType="base64">HEweMSAyMTQ3NDgzNjQ3HQ==</validators>
+                      <defaultValue>1</defaultValue>
+                    </field>
+                    <field description="Content Overflow" name="overflow" type="S">
+                      <selectionValues>
+                        <option description="Auto">auto</option>
+                        <option description="Hidden">hidden</option>
+                        <option description="Scroll">scroll</option>
+                        <option description="Unset">unset</option>
+                        <option description="Visible">visible</option>
+                      </selectionValues>
+                      <defaultValue>auto</defaultValue>
+                    </field>
+                    <field description="Visible" name="visible" type="B">
+                      <defaultValue>1</defaultValue>
+                    </field>
+                    <field description="Custom Classes" name="customClasses" type="S">
+                      <defaultValue/>
+                    </field>
+                    <field description="Element CSS Style" editor="code" name="style" nullable="true" type="S">
+                      <editorOptions>scss</editorOptions>
+                      <defaultValue>
+                        <nullValue/>
+                      </defaultValue>
+                    </field>
+                    <field description="Breakpoints" name="gridBreakpoints" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="visibleChildren" name="visibleChildren" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Container Style" editor="code" name="containerStyle" nullable="true" type="S">
+                      <editorOptions>scss</editorOptions>
+                      <defaultValue>
+                        <nullValue/>
+                      </defaultValue>
+                    </field>
+                    <field description="Class Name" name="preloaderClass" type="S">
+                      <defaultValue/>
+                    </field>
+                    <field description="Text" name="preloaderText" type="S">
+                      <defaultValue/>
+                    </field>
+                    <field description="Visible" name="preloaderVisible" type="B">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Icon" name="preloaderIcon" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Component Bindings " name="componentBindings" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Empty Chart Text" name="emptyChartText" type="S">
+                      <defaultValue>No Data</defaultValue>
+                    </field>
+                    <field description="Series Color" name="seriesColor" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Tooltip Description" name="tooltipDescription" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Label Enable" name="leftLabelEnable" type="B">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Label Offset" name="leftLabelOffset" type="I">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Label Value" name="leftLabelValue" nullable="true" type="S">
+                      <defaultValue>
+                        <nullValue/>
+                      </defaultValue>
+                    </field>
+                    <field description="Label Fill" name="leftLabelFill" nullable="true" type="S">
+                      <defaultValue>
+                        <nullValue/>
+                      </defaultValue>
+                    </field>
+                    <field description="Label Font Size" name="leftLabelFontSize" type="E">
+                      <defaultValue>0.0</defaultValue>
+                    </field>
+                    <field description="Label Enable" name="bottomLabelEnable" type="B">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Label Offset" name="bottomLabelOffset" type="I">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Label Value" name="bottomLabelValue" nullable="true" type="S">
+                      <defaultValue>
+                        <nullValue/>
+                      </defaultValue>
+                    </field>
+                    <field description="Label Fill" name="bottomLabelFill" nullable="true" type="S">
+                      <defaultValue>
+                        <nullValue/>
+                      </defaultValue>
+                    </field>
+                    <field description="Label Font Size" name="bottomLabelFontSize" type="E">
+                      <defaultValue>0.0</defaultValue>
+                    </field>
+                    <field description="Axis Label Shift" name="axisLabelShiftY" type="I">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Axis Label Shift" name="axisLabelShiftX" type="I">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Axis Fill Color" name="axisFillY" type="S">
+                      <defaultValue/>
+                    </field>
+                    <field description="Axis Fill Color" name="axisFillX" type="S">
+                      <defaultValue/>
+                    </field>
+                    <field description="Axis Font Size" name="axisFontSizeY" type="S">
+                      <defaultValue/>
+                    </field>
+                    <field description="Axis Font Size" name="axisFontSizeX" type="S">
+                      <defaultValue/>
+                    </field>
+                    <field description="Date and Time Format" name="dateTimeFormat" type="S">
+                      <defaultValue>HH:mm:ss</defaultValue>
+                    </field>
+                    <field description="Tooltip Date and Time Format" name="tooltipDateTimeFormat" type="S">
+                      <defaultValue>HH:mm:ss</defaultValue>
+                    </field>
+                    <field description="Axis Domain" name="axisDomainX" type="S">
+                      <selectionValues>
+                        <option description="Auto">auto</option>
+                        <option description="Optimize">optimized</option>
+                        <option description="Custom Values">custom</option>
+                      </selectionValues>
+                      <defaultValue>auto</defaultValue>
+                    </field>
+                    <field description="Axis Custom Domain" name="axisDomainCustomX" type="S">
+                      <defaultValue>auto, auto</defaultValue>
+                    </field>
+                    <field description="Axis Domain" name="axisDomainY" type="S">
+                      <selectionValues>
+                        <option description="Auto">auto</option>
+                        <option description="Optimize">optimized</option>
+                        <option description="Custom Values">custom</option>
+                      </selectionValues>
+                      <defaultValue>auto</defaultValue>
+                    </field>
+                    <field description="Axis Custom Domain" name="axisDomainCustomY" type="S">
+                      <defaultValue>auto, auto</defaultValue>
+                    </field>
+                    <field description="Show Legend" name="showLegend" type="B">
+                      <defaultValue>1</defaultValue>
+                    </field>
+                    <field description="Legend Position" name="legendPosition" type="S">
+                      <selectionValues>
+                        <option description="Top">top</option>
+                        <option description="Top Left">top-left</option>
+                        <option description="Top Right">top-right</option>
+                        <option description="Left">left</option>
+                        <option description="Left Top">left-top</option>
+                        <option description="Left Bottom">left-bottom</option>
+                        <option description="Right">right</option>
+                        <option description="Right Top">right-top</option>
+                        <option description="Right Bottom">right-bottom</option>
+                        <option description="Bottom">bottom</option>
+                        <option description="Bottom Left">bottom-left</option>
+                        <option description="Bottom Right">bottom-right</option>
+                      </selectionValues>
+                      <defaultValue>bottom</defaultValue>
+                    </field>
+                    <field description="Chart Padding" name="chartPadding" nullable="true" type="I">
+                      <defaultValue>
+                        <nullValue/>
+                      </defaultValue>
+                    </field>
+                    <field description="Zoomable" name="zoomable" type="B">
+                      <defaultValue>1</defaultValue>
+                    </field>
+                    <field description="Zoom Type" name="zoomType" type="S">
+                      <selectionValues>
+                        <option description="Mouse Wheel">mouseWheel</option>
+                        <option description="Zoom Buttons">zoomButtons</option>
+                        <option description="Range Slider">brush</option>
+                        <option description="Brush">selectZoom</option>
+                      </selectionValues>
+                      <defaultValue>mouseWheel</defaultValue>
+                    </field>
+                    <field description="Zoom In Button" name="zoomInButton" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Zoom Out Button" name="zoomOutButton" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Disable Slider Preview" name="disableSliderPreview" type="B">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Default Zoom Range" name="defaultZoomRange" nullable="true" type="F">
+                      <validators contentType="base64">HEweMC4wIDEuMB0=</validators>
+                      <defaultValue>0.0</defaultValue>
+                    </field>
+                    <field description="Delay of zoom event " editor="period" name="zoomEventDebounceDelay" type="L">
+                      <editorOptions>0 0</editorOptions>
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Button Container Style" editor="code" name="buttonContainerStyle" type="S">
+                      <editorOptions>scss</editorOptions>
+                      <defaultValue/>
+                    </field>
+                    <field description="Data Source Type" name="sourceType" type="S">
+                      <selectionValues>
+                        <option description="Event">eventData</option>
+                        <option description="Variable">variableData</option>
+                        <option description="Source Data">sourceData</option>
+                      </selectionValues>
+                      <defaultValue>sourceData</defaultValue>
+                    </field>
+                    <field description="Source Variables" name="variableData" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Source Events" name="eventData" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Include Historical Data" name="useHistoricalData" readonly="true" type="B">
+                      <defaultValue>1</defaultValue>
+                    </field>
+                    <field description="Aggregation Time Period" name="aggregateTimePeriod" type="S">
+                      <selectionValues>
+                        <option description="Millisecond">millisecond</option>
+                        <option description="Second">second</option>
+                        <option description="Minute">minute</option>
+                        <option description="Hour">hour</option>
+                        <option description="Day">day</option>
+                        <option description="Week">week</option>
+                        <option description="Month">month</option>
+                        <option description="Quarter">quarter</option>
+                        <option description="Year">year</option>
+                      </selectionValues>
+                      <defaultValue>minute</defaultValue>
+                    </field>
+                    <field description="Limit Time Range" name="limitTimeRange" type="S">
+                      <selectionValues>
+                        <option description="Full History">fullHistory</option>
+                        <option description="Last Values">lastValues</option>
+                        <option description="Date Range">dateRange</option>
+                      </selectionValues>
+                      <defaultValue>fullHistory</defaultValue>
+                    </field>
+                    <field description="Time Range" editor="period" name="timeRange" type="L">
+                      <editorOptions>1</editorOptions>
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Start Date" name="startDate" nullable="true" type="D">
+                      <defaultValue>
+                        <nullValue/>
+                      </defaultValue>
+                    </field>
+                    <field description="End Date" name="endDate" nullable="true" type="D">
+                      <defaultValue>
+                        <nullValue/>
+                      </defaultValue>
+                    </field>
+                    <field description="Source Data" name="sourceData" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Source Data Bindings" name="dataBindings" type="T">
+                      <defaultValue>
+                        <table>
+                          <format maxRecords="2147483647"/>
+                        </table>
+                      </defaultValue>
+                    </field>
+                    <field description="Show X Axis Label" name="showXAxisLabel" type="B">
+                      <defaultValue>1</defaultValue>
+                    </field>
+                    <field description="Show Y Axis Label" name="showYAxisLabel" type="B">
+                      <defaultValue>1</defaultValue>
+                    </field>
+                    <field description="Render as Group" name="renderAsGroup" type="B">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Render as Stack" name="renderAsStack" type="B">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Render as Percentage" name="renderAsPercentage" type="B">
+                      <defaultValue>0</defaultValue>
+                    </field>
+                    <field description="Column Width Ratio" name="columnWidthRatio" nullable="true" type="F">
+                      <validators contentType="base64">HEweMC4wIDEuMB0=</validators>
+                      <defaultValue>0.7</defaultValue>
+                    </field>
+                    <field description="Axis Render Type" name="metricTypeX" type="S">
+                      <selectionValues>
+                        <option description="auto">auto</option>
+                        <option description="linear">linear</option>
+                        <option description="log">log</option>
+                        <option description="pow">pow</option>
+                        <option description="time">time</option>
+                        <option description="quantize">quantize</option>
+                        <option description="quantile">quantile</option>
+                        <option description="cat">cat</option>
+                        <option description="timeCat">timeCat</option>
+                        <option description="identity">identity</option>
+                      </selectionValues>
+                      <defaultValue>auto</defaultValue>
+                    </field>
+                    <field description="Tick render method" name="tickMethodX" type="S">
+                      <selectionValues>
+                        <option description="auto">auto</option>
+                        <option description="wilkinson-extended">wilkinson-extended</option>
+                        <option description="r-pretty">r-pretty</option>
+                        <option description="time">time</option>
+                        <option description="time-pretty">time-pretty</option>
+                        <option description="log">log</option>
+                        <option description="pow">pow</option>
+                        <option description="quantile">quantile</option>
+                      </selectionValues>
+                      <defaultValue>auto</defaultValue>
+                    </field>
+                    <field description="Axis Render Type" name="metricTypeY" type="S">
+                      <selectionValues>
+                        <option description="auto">auto</option>
+                        <option description="linear">linear</option>
+                        <option description="log">log</option>
+                        <option description="pow">pow</option>
+                        <option description="time">time</option>
+                        <option description="quantize">quantize</option>
+                        <option description="quantile">quantile</option>
+                        <option description="cat">cat</option>
+                        <option description="timeCat">timeCat</option>
+                        <option description="identity">identity</option>
+                      </selectionValues>
+                      <defaultValue>auto</defaultValue>
+                    </field>
+                    <field description="Tick render method" name="tickMethodY" type="S">
+                      <selectionValues>
+                        <option description="auto">auto</option>
+                        <option description="wilkinson-extended">wilkinson-extended</option>
+                        <option description="r-pretty">r-pretty</option>
+                        <option description="time">time</option>
+                        <option description="time-pretty">time-pretty</option>
+                        <option description="log">log</option>
+                        <option description="pow">pow</option>
+                        <option description="quantile">quantile</option>
+                      </selectionValues>
+                      <defaultValue>auto</defaultValue>
+                    </field>
+                    <field description="Language" name="lang" type="S">
+                      <selectionValues>
+                        <option description="Auto">auto</option>
+                        <option description="English">en</option>
+                        <option description="Russian">ru</option>
+                        <option description="Spanish">es</option>
+                      </selectionValues>
+                      <defaultValue>auto</defaultValue>
+                    </field>
+                    <field description="Grid Line Opacity" name="gridLineStyleOpacityX" type="F">
+                      <validators contentType="base64">HEweMC4wIDEuMB0=</validators>
+                      <defaultValue>0.5</defaultValue>
+                    </field>
+                    <field description="Grid Line Opacity" name="gridLineStyleOpacityY" type="F">
+                      <validators contentType="base64">HEweMC4wIDEuMB0=</validators>
+                      <defaultValue>0.5</defaultValue>
+                    </field>
+                  </fields>
+                </format>
+                <records>
+                  <record>
+                    <value name="name">barChart0</value>
+                    <value name="gridx">5</value>
+                    <value name="gridy">2</value>
+                    <value name="gridWidth">8</value>
+                    <value name="style"/>
+                    <value name="gridBreakpoints">
+                      <table>
+                        <format maxRecords="2147483647">
+                          <fields>
+                            <field description="Breakpoint" name="breakpoint" nullable="true" type="S">
+                              <defaultValue>default</defaultValue>
+                            </field>
+                            <field description="Style" name="style" nullable="true" type="S">
+                              <defaultValue>
+                                <nullValue/>
+                              </defaultValue>
+                            </field>
+                            <field description="Container Style" name="containerStyle" nullable="true" type="S">
+                              <defaultValue>
+                                <nullValue/>
+                              </defaultValue>
+                            </field>
+                          </fields>
+                        </format>
+                        <records>
+                          <record>
+                            <value name="breakpoint">fullHD</value>
+                            <value name="style"/>
+                            <value name="containerStyle">order-id:0*~*active:false*~*gridx:5*~*gridy:2*~*grid-width:8*~*grid-height:1*~*overflow:auto*~*</value>
+                          </record>
+                        </records>
+                      </table>
+                    </value>
+                    <value name="visibleChildren">
+                      <table>
+                        <format maxRecords="2147483647">
+                          <fields>
+                            <field name="path" type="S">
+                              <defaultValue/>
+                            </field>
+                          </fields>
+                        </format>
+                      </table>
+                    </value>
+                    <value name="containerStyle"/>
+                    <value name="preloaderIcon">
+                      <table>
+                        <format maxRecords="1" minRecords="1">
+                          <fields>
+                            <field description="Type" name="imageType" type="I">
+                              <selectionValues>
+                                <option description="Data">0</option>
+                                <option description="Url">1</option>
+                              </selectionValues>
+                              <defaultValue>0</defaultValue>
+                            </field>
+                            <field description="Image Data" name="imageData" type="A">
+                              <defaultValue>
+                                <data>
+                                  <nullValue/>
+                                </data>
+                              </defaultValue>
+                            </field>
+                            <field description="Image URL" name="imageUrl" type="S">
+                              <defaultValue/>
+                            </field>
+                          </fields>
+                        </format>
+                      </table>
+                    </value>
+                    <value name="seriesColor">
+                      <table>
+                        <format maxRecords="2147483647">
+                          <fields>
+                            <field description="Series" name="series" type="S">
+                              <defaultValue/>
+                            </field>
+                            <field description="Color" name="color" type="S">
+                              <defaultValue/>
+                            </field>
+                          </fields>
+                        </format>
+                      </table>
+                    </value>
+                    <value name="tooltipDescription">
+                      <table>
+                        <format maxRecords="2147483647">
+                          <fields>
+                            <field description="Category" name="category" type="S">
+                              <defaultValue/>
+                            </field>
+                            <field description="Description" name="description" type="S">
+                              <defaultValue/>
+                            </field>
+                          </fields>
+                        </format>
+                      </table>
+                    </value>
+                    <value name="leftLabelOffset">5</value>
+                    <value name="leftLabelValue"/>
+                    <value name="leftLabelFill"/>
+                    <value name="leftLabelFontSize">13.2</value>
+                    <value name="bottomLabelValue"/>
+                    <value name="bottomLabelFill"/>
+                    <value name="bottomLabelFontSize">13.2</value>
+                    <value name="axisLabelShiftY">10</value>
+                    <value name="axisLabelShiftX">10</value>
+                    <value name="showLegend">0</value>
+                    <value name="zoomInButton">
+                      <table>
+                        <format maxRecords="1" minRecords="1">
+                          <fields>
+                            <field description="Value" name="buttonValue" type="S">
+                              <defaultValue>+</defaultValue>
+                            </field>
+                            <field description="Style" name="buttonCss" type="S">
+                              <defaultValue/>
+                            </field>
+                          </fields>
+                        </format>
+                        <records>
+                          <record/>
+                        </records>
+                      </table>
+                    </value>
+                    <value name="zoomOutButton">
+                      <table>
+                        <format maxRecords="1" minRecords="1">
+                          <fields>
+                            <field description="Value" name="buttonValue" type="S">
+                              <defaultValue>-</defaultValue>
+                            </field>
+                            <field description="Style" name="buttonCss" type="S">
+                              <defaultValue/>
+                            </field>
+                          </fields>
+                        </format>
+                        <records>
+                          <record/>
+                        </records>
+                      </table>
+                    </value>
+                    <value name="zoomEventDebounceDelay">500</value>
+                    <value name="variableData">
+                      <table>
+                        <format maxRecords="2147483647">
+                          <fields>
+                            <field description="Name" name="sourceVariablesName" type="S">
+                              <defaultValue/>
+                            </field>
+                            <field description="Context" editor="context" name="sourceVariablesContext" type="S">
+                              <defaultValue/>
+                            </field>
+                            <field description="Variable" name="sourceVariablesVariable" type="S">
+                              <defaultValue/>
+                            </field>
+                            <field description="Expression" editor="expression" name="sourceVariablesExpression" type="S">
+                              <editorOptions contentType="base64">HEYeHBxjb250ZXh0HRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IENvbnRleHQdHRwcdGFibGUdHFQdHEYeTh0cQR4aHRxEHkRlZmF1bHQgVGFibGUdHRwccmVmZXJlbmNlcx0cVB0cRh5OHRxBHhxGHhwccmVmZXJlbmNlHRxTHRxBHh0cRB5SZWZlcmVuY2UdHRwcZGVzY3JpcHRpb24dHFMdHEEeHRxEHkRlc2NyaXB0aW9uHR0dHRxEHlJlZmVyZW5jZXMdHRwcZXhwZWN0ZWRSZXN1bHQdHFMdHEYeTh0cQR4aHRxEHkV4cGVjdGVkIFJlc3VsdB0dHBxjb250ZXh0RGVzY3JpcHRpb24dHFMdHEYeTh0cQR4aHRxEHkRlZmF1bHQgQ29udGV4dCBEZXNjcmlwdGlvbh0dHBx0YWJsZURlc2NyaXB0aW9uHRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IFRhYmxlIERlc2NyaXB0aW9uHR0cTR4xHRxYHjEdHRxSHhwdHBxGHh0dHBodHBodHBodHBodHQ==</editorOptions>
+                              <help>An expression that is evaluated every time the binding is processed. Its evaluation result is stored in binding Target.</help>
+                              <defaultValue/>
+                            </field>
+                            <field description="Custom Timestamp Expression" editor="expression" name="sourceVariablesCustomTimeStampExpression" type="S">
+                              <editorOptions contentType="base64">HEYeHBxjb250ZXh0HRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IENvbnRleHQdHRwcdGFibGUdHFQdHEYeTh0cQR4aHRxEHkRlZmF1bHQgVGFibGUdHRwccmVmZXJlbmNlcx0cVB0cRh5OHRxBHhxGHhwccmVmZXJlbmNlHRxTHRxBHh0cRB5SZWZlcmVuY2UdHRwcZGVzY3JpcHRpb24dHFMdHEEeHRxEHkRlc2NyaXB0aW9uHR0dHRxEHlJlZmVyZW5jZXMdHRwcZXhwZWN0ZWRSZXN1bHQdHFMdHEYeTh0cQR4aHRxEHkV4cGVjdGVkIFJlc3VsdB0dHBxjb250ZXh0RGVzY3JpcHRpb24dHFMdHEYeTh0cQR4aHRxEHkRlZmF1bHQgQ29udGV4dCBEZXNjcmlwdGlvbh0dHBx0YWJsZURlc2NyaXB0aW9uHRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IFRhYmxlIERlc2NyaXB0aW9uHR0cTR4xHRxYHjEdHRxSHhwdHBxGHh0dHBodHBodHBodHBodHQ==</editorOptions>
+                              <help>An expression that is evaluated every time the binding is processed. Its evaluation result is stored in binding Target.</help>
+                              <defaultValue/>
+                            </field>
+                            <field description="Propagate" name="sourceVariablesPropagate" type="B">
+                              <defaultValue>0</defaultValue>
+                            </field>
+                            <field description="Aggregation" name="sourceVariablesAggregation" type="S">
+                              <selectionValues>
+                                <option description="Average">average</option>
+                                <option description="Minimum">minimum</option>
+                                <option description="Maximum">maximum</option>
+                                <option description="Summation">summation</option>
+                                <option description="First">fist</option>
+                                <option description="Last">last</option>
+                              </selectionValues>
+                              <defaultValue>average</defaultValue>
+                            </field>
+                            <field description="Type" name="sourceVariablesType" type="S">
+                              <selectionValues>
+                                <option description="Gauge">gauge</option>
+                                <option description="Counter">counter</option>
+                                <option description="Derive">derive</option>
+                                <option description="Absolute">absolute</option>
+                              </selectionValues>
+                              <defaultValue>gauge</defaultValue>
+                            </field>
+                          </fields>
+                          <bindings>
+                            <binding>
+                              <reference>sourceVariablesExpression#options</reference>
+                              <expression>expressionEditorOptions(absolute({sourceVariablesContext}), {sourceVariablesVariable}, 1)</expression>
+                            </binding>
+                            <binding>
+                              <reference>sourceVariablesVariable#choices</reference>
+                              <expression>{utilities:variablesByMask(&apos;{sourceVariablesContext}&apos;)}</expression>
+                            </binding>
+                          </bindings>
+                        </format>
+                      </table>
+                    </value>
+                    <value name="eventData">
+                      <table>
+                        <format maxRecords="2147483647">
+                          <fields>
+                            <field description="Name" name="eventDataName" type="S">
+                              <defaultValue/>
+                            </field>
+                            <field description="Context" editor="context" name="eventDataContext" type="S">
+                              <defaultValue/>
+                            </field>
+                            <field description="Event" name="eventDataEvent" type="S">
+                              <defaultValue/>
+                            </field>
+                            <field description="Expression" editor="expression" name="eventDataExpression" type="S">
+                              <editorOptions contentType="base64">HEYeHBxjb250ZXh0HRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IENvbnRleHQdHRwcdGFibGUdHFQdHEYeTh0cQR4aHRxEHkRlZmF1bHQgVGFibGUdHRwccmVmZXJlbmNlcx0cVB0cRh5OHRxBHhxGHhwccmVmZXJlbmNlHRxTHRxBHh0cRB5SZWZlcmVuY2UdHRwcZGVzY3JpcHRpb24dHFMdHEEeHRxEHkRlc2NyaXB0aW9uHR0dHRxEHlJlZmVyZW5jZXMdHRwcZXhwZWN0ZWRSZXN1bHQdHFMdHEYeTh0cQR4aHRxEHkV4cGVjdGVkIFJlc3VsdB0dHBxjb250ZXh0RGVzY3JpcHRpb24dHFMdHEYeTh0cQR4aHRxEHkRlZmF1bHQgQ29udGV4dCBEZXNjcmlwdGlvbh0dHBx0YWJsZURlc2NyaXB0aW9uHRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IFRhYmxlIERlc2NyaXB0aW9uHR0cTR4xHRxYHjEdHRxSHhwdHBxGHh0dHBodHBodHBodHBodHQ==</editorOptions>
+                              <help>An expression that is evaluated every time the binding is processed. Its evaluation result is stored in binding Target.</help>
+                              <defaultValue/>
+                            </field>
+                            <field description="Custom Timestamp Expression" editor="expression" name="eventDataCustomTimeStampExpression" type="S">
+                              <editorOptions contentType="base64">HEYeHBxjb250ZXh0HRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IENvbnRleHQdHRwcdGFibGUdHFQdHEYeTh0cQR4aHRxEHkRlZmF1bHQgVGFibGUdHRwccmVmZXJlbmNlcx0cVB0cRh5OHRxBHhxGHhwccmVmZXJlbmNlHRxTHRxBHh0cRB5SZWZlcmVuY2UdHRwcZGVzY3JpcHRpb24dHFMdHEEeHRxEHkRlc2NyaXB0aW9uHR0dHRxEHlJlZmVyZW5jZXMdHRwcZXhwZWN0ZWRSZXN1bHQdHFMdHEYeTh0cQR4aHRxEHkV4cGVjdGVkIFJlc3VsdB0dHBxjb250ZXh0RGVzY3JpcHRpb24dHFMdHEYeTh0cQR4aHRxEHkRlZmF1bHQgQ29udGV4dCBEZXNjcmlwdGlvbh0dHBx0YWJsZURlc2NyaXB0aW9uHRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IFRhYmxlIERlc2NyaXB0aW9uHR0cTR4xHRxYHjEdHRxSHhwdHBxGHh0dHBodHBodHBodHBodHQ==</editorOptions>
+                              <help>An expression that is evaluated every time the binding is processed. Its evaluation result is stored in binding Target.</help>
+                              <defaultValue/>
+                            </field>
+                            <field description="Aggregation" name="eventDataAggregation" type="S">
+                              <selectionValues>
+                                <option description="Average">average</option>
+                                <option description="Minimum">minimum</option>
+                                <option description="Maximum">maximum</option>
+                                <option description="Summation">summation</option>
+                                <option description="First">fist</option>
+                                <option description="Last">last</option>
+                              </selectionValues>
+                              <defaultValue>average</defaultValue>
+                            </field>
+                          </fields>
+                          <bindings>
+                            <binding>
+                              <reference>eventDataExpression#options</reference>
+                              <expression>expressionEditorOptions(absolute({eventDataContext}), {eventDataEvent}, 1)</expression>
+                            </binding>
+                            <binding>
+                              <reference>eventDataEvent#choices</reference>
+                              <expression>{utilities:eventsByMask(&apos;{eventDataContext}&apos;)}</expression>
+                            </binding>
+                          </bindings>
+                        </format>
+                      </table>
+                    </value>
+                    <value name="timeRange">1000</value>
+                    <value name="startDate">2023-04-27 12:23:14.320</value>
+                    <value name="endDate">2023-04-27 13:23:14.320</value>
+                    <value name="sourceData">
+                      <table>
+                        <format maxRecords="2147483647">
+                          <fields>
+                            <field description="Series" name="series" type="S">
+                              <defaultValue/>
+                            </field>
+                            <field description="Category" name="category" type="S">
+                              <defaultValue/>
+                            </field>
+                            <field description="Value" name="value" nullable="true" type="E">
+                              <defaultValue>
+                                <nullValue/>
+                              </defaultValue>
+                            </field>
+                            <field description="Group" name="group" nullable="true" type="S">
+                              <defaultValue/>
+                            </field>
+                          </fields>
+                        </format>
+                        <records>
+                          <record>
+                            <value name="series">Series 1</value>
+                            <value name="category">Category 1</value>
+                            <value name="value">21.0</value>
+                            <value name="group">Group 1</value>
+                          </record>
+                          <record>
+                            <value name="series">Series 1</value>
+                            <value name="category">Category 2</value>
+                            <value name="value">50.0</value>
+                            <value name="group">Group 2</value>
+                          </record>
+                          <record>
+                            <value name="series">Series 1</value>
+                            <value name="category">Category 3</value>
+                            <value name="value">152.0</value>
+                            <value name="group">Group 3</value>
+                          </record>
+                          <record>
+                            <value name="series">Series 1</value>
+                            <value name="category">Category 4</value>
+                            <value name="value">184.0</value>
+                            <value name="group">Group 1</value>
+                          </record>
+                          <record>
+                            <value name="series">Series 1</value>
+                            <value name="category">Category 5</value>
+                            <value name="value">299.0</value>
+                            <value name="group">Group 2</value>
+                          </record>
+                          <record>
+                            <value name="series">Series 2</value>
+                            <value name="category">Category 1</value>
+                            <value name="value">275.0</value>
+                            <value name="group">Group 3</value>
+                          </record>
+                          <record>
+                            <value name="series">Series 2</value>
+                            <value name="category">Category 2</value>
+                            <value name="value">121.0</value>
+                            <value name="group">Group 1</value>
+                          </record>
+                          <record>
+                            <value name="series">Series 2</value>
+                            <value name="category">Category 3</value>
+                            <value name="value">98.0</value>
+                            <value name="group">Group 2</value>
+                          </record>
+                          <record>
+                            <value name="series">Series 2</value>
+                            <value name="category">Category 4</value>
+                            <value name="value">103.0</value>
+                            <value name="group">Group 3</value>
+                          </record>
+                          <record>
+                            <value name="series">Series 2</value>
+                            <value name="category">Category 5</value>
+                            <value name="value">210.0</value>
+                            <value name="group">Group 1</value>
+                          </record>
+                          <record>
+                            <value name="series">Series 3</value>
+                            <value name="category">Category 1</value>
+                            <value name="value">198.0</value>
+                            <value name="group">Group 2</value>
+                          </record>
+                          <record>
+                            <value name="series">Series 3</value>
+                            <value name="category">Category 2</value>
+                            <value name="value">165.0</value>
+                            <value name="group">Group 3</value>
+                          </record>
+                          <record>
+                            <value name="series">Series 3</value>
+                            <value name="category">Category 3</value>
+                            <value name="value">55.0</value>
+                            <value name="group">Group 1</value>
+                          </record>
+                          <record>
+                            <value name="series">Series 3</value>
+                            <value name="category">Category 4</value>
+                            <value name="value">34.0</value>
+                            <value name="group">Group 2</value>
+                          </record>
+                          <record>
+                            <value name="series">Series 3</value>
+                            <value name="category">Category 5</value>
+                            <value name="value">77.0</value>
+                            <value name="group">Group 3</value>
+                          </record>
+                        </records>
+                      </table>
+                    </value>
+                    <value name="dataBindings">
+                      <table>
+                        <format maxRecords="2147483647">
+                          <fields>
+                            <field description="Series" editor="expression" name="series" type="S">
+                              <editorOptions contentType="base64">HEYeHBxjb250ZXh0HRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IENvbnRleHQdHRwcdGFibGUdHFQdHEYeTh0cQR4aHRxEHkRlZmF1bHQgVGFibGUdHRwccmVmZXJlbmNlcx0cVB0cRh5OHRxBHhxGHhwccmVmZXJlbmNlHRxTHRxBHh0cRB5SZWZlcmVuY2UdHRwcZGVzY3JpcHRpb24dHFMdHEEeHRxEHkRlc2NyaXB0aW9uHR0dHRxEHlJlZmVyZW5jZXMdHRwcZXhwZWN0ZWRSZXN1bHQdHFMdHEYeTh0cQR4aHRxEHkV4cGVjdGVkIFJlc3VsdB0dHBxjb250ZXh0RGVzY3JpcHRpb24dHFMdHEYeTh0cQR4aHRxEHkRlZmF1bHQgQ29udGV4dCBEZXNjcmlwdGlvbh0dHBx0YWJsZURlc2NyaXB0aW9uHRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IFRhYmxlIERlc2NyaXB0aW9uHR0cTR4xHRxYHjEdHRxSHhwdHBxGHh0dHBodHBodHBodHBodHQ==</editorOptions>
+                              <defaultValue/>
+                            </field>
+                            <field description="Category" editor="expression" name="category" type="S">
+                              <editorOptions contentType="base64">HEYeHBxjb250ZXh0HRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IENvbnRleHQdHRwcdGFibGUdHFQdHEYeTh0cQR4aHRxEHkRlZmF1bHQgVGFibGUdHRwccmVmZXJlbmNlcx0cVB0cRh5OHRxBHhxGHhwccmVmZXJlbmNlHRxTHRxBHh0cRB5SZWZlcmVuY2UdHRwcZGVzY3JpcHRpb24dHFMdHEEeHRxEHkRlc2NyaXB0aW9uHR0dHRxEHlJlZmVyZW5jZXMdHRwcZXhwZWN0ZWRSZXN1bHQdHFMdHEYeTh0cQR4aHRxEHkV4cGVjdGVkIFJlc3VsdB0dHBxjb250ZXh0RGVzY3JpcHRpb24dHFMdHEYeTh0cQR4aHRxEHkRlZmF1bHQgQ29udGV4dCBEZXNjcmlwdGlvbh0dHBx0YWJsZURlc2NyaXB0aW9uHRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IFRhYmxlIERlc2NyaXB0aW9uHR0cTR4xHRxYHjEdHRxSHhwdHBxGHh0dHBodHBodHBodHBodHQ==</editorOptions>
+                              <defaultValue/>
+                            </field>
+                            <field description="Value" editor="expression" name="value" type="S">
+                              <editorOptions contentType="base64">HEYeHBxjb250ZXh0HRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IENvbnRleHQdHRwcdGFibGUdHFQdHEYeTh0cQR4aHRxEHkRlZmF1bHQgVGFibGUdHRwccmVmZXJlbmNlcx0cVB0cRh5OHRxBHhxGHhwccmVmZXJlbmNlHRxTHRxBHh0cRB5SZWZlcmVuY2UdHRwcZGVzY3JpcHRpb24dHFMdHEEeHRxEHkRlc2NyaXB0aW9uHR0dHRxEHlJlZmVyZW5jZXMdHRwcZXhwZWN0ZWRSZXN1bHQdHFMdHEYeTh0cQR4aHRxEHkV4cGVjdGVkIFJlc3VsdB0dHBxjb250ZXh0RGVzY3JpcHRpb24dHFMdHEYeTh0cQR4aHRxEHkRlZmF1bHQgQ29udGV4dCBEZXNjcmlwdGlvbh0dHBx0YWJsZURlc2NyaXB0aW9uHRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IFRhYmxlIERlc2NyaXB0aW9uHR0cTR4xHRxYHjEdHRxSHhwdHBxGHh0dHBodHBodHBodHBodHQ==</editorOptions>
+                              <defaultValue/>
+                            </field>
+                            <field description="Group" editor="expression" name="group" nullable="true" type="S">
+                              <editorOptions contentType="base64">HEYeHBxjb250ZXh0HRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IENvbnRleHQdHRwcdGFibGUdHFQdHEYeTh0cQR4aHRxEHkRlZmF1bHQgVGFibGUdHRwccmVmZXJlbmNlcx0cVB0cRh5OHRxBHhxGHhwccmVmZXJlbmNlHRxTHRxBHh0cRB5SZWZlcmVuY2UdHRwcZGVzY3JpcHRpb24dHFMdHEEeHRxEHkRlc2NyaXB0aW9uHR0dHRxEHlJlZmVyZW5jZXMdHRwcZXhwZWN0ZWRSZXN1bHQdHFMdHEYeTh0cQR4aHRxEHkV4cGVjdGVkIFJlc3VsdB0dHBxjb250ZXh0RGVzY3JpcHRpb24dHFMdHEYeTh0cQR4aHRxEHkRlZmF1bHQgQ29udGV4dCBEZXNjcmlwdGlvbh0dHBx0YWJsZURlc2NyaXB0aW9uHRxTHRxGHk4dHEEeGh0cRB5EZWZhdWx0IFRhYmxlIERlc2NyaXB0aW9uHR0cTR4xHRxYHjEdHRxSHhwdHBxGHh0dHBodHBodHBodHBodHQ==</editorOptions>
+                              <defaultValue/>
+                            </field>
+                          </fields>
+                        </format>
+                        <records>
+                          <record>
+                            <value name="series">{series}</value>
+                            <value name="category">{category}</value>
+                            <value name="value">{value}</value>
+                            <value name="group">{group}</value>
+                          </record>
+                        </records>
                       </table>
                     </value>
                   </record>
