@@ -1582,11 +1582,11 @@ cell(
                             <field description="Value" extendableSelectionValues="true" name="value" type="S">
                               <selectionValues>
                                 <option description="Mobile">320</option>
-                                <option description="Tablet">800</option>
-                                <option description="Laptop">1366</option>
                                 <option description="Full HD">1920</option>
-                                <option description="QHD">2560</option>
+                                <option description="Laptop">1366</option>
+                                <option description="Tablet">800</option>
                                 <option description="Ultra HD">3840</option>
+                                <option description="QHD">2560</option>
                               </selectionValues>
                               <defaultValue>320</defaultValue>
                             </field>
@@ -1618,11 +1618,11 @@ cell(
                             <field description="Value" extendableSelectionValues="true" name="value" type="S">
                               <selectionValues>
                                 <option description="Mobile">320</option>
-                                <option description="Tablet">800</option>
-                                <option description="Laptop">1366</option>
                                 <option description="Full HD">1920</option>
-                                <option description="QHD">2560</option>
+                                <option description="Laptop">1366</option>
+                                <option description="Tablet">800</option>
                                 <option description="Ultra HD">3840</option>
+                                <option description="QHD">2560</option>
                               </selectionValues>
                               <defaultValue>320</defaultValue>
                             </field>
@@ -7368,7 +7368,9 @@ cell(
                             <value name="style"/>
                             <value name="containerStyle">order-id:0*~*active:false*~*gridx:1*~*gridy:1*~*grid-width:12*~*grid-height:2*~*overflow:auto*~*container-style:#toolbar &gt; div:nth-child(2) &gt; div.component-system-button.round.disabled.toolbar-import-button.toolbar-button,#toolbar &gt; div:nth-child(2) &gt; div.component-system-button.round.disabled.toolbar-reset-button.toolbar-button{display:none;}
 
-.rc-color-picker-trigger{border-radius: 40px;border: none;max-width: 31px;} *~*</value>
+.rc-color-picker-trigger{border-radius: 40px;border: none;max-width: 31px;}
+
+.ant-table-cell.without-custom-width.data-table-column.tagsS &gt; div &gt; div &gt; div &gt; span {background-color:#80008040; border-radius:10px;}*~*</value>
                           </record>
                         </records>
                       </table>
@@ -7386,7 +7388,9 @@ cell(
                     </value>
                     <value name="containerStyle">#toolbar &gt; div:nth-child(2) &gt; div.component-system-button.round.disabled.toolbar-import-button.toolbar-button,#toolbar &gt; div:nth-child(2) &gt; div.component-system-button.round.disabled.toolbar-reset-button.toolbar-button{display:none;}
 
-.rc-color-picker-trigger{border-radius: 40px;border: none;max-width: 31px;} </value>
+.rc-color-picker-trigger{border-radius: 40px;border: none;max-width: 31px;}
+
+.ant-table-cell.without-custom-width.data-table-column.tagsS &gt; div &gt; div &gt; div &gt; span {background-color:#80008040; border-radius:10px;}</value>
                     <value name="preloaderIcon">
                       <table>
                         <format maxRecords="1" minRecords="1">
@@ -7471,10 +7475,10 @@ cell(
                             <field description="Action" name="buttonAction" type="S">
                               <selectionValues>
                                 <option description=""/>
-                                <option description="Edit">edit</option>
-                                <option description="Delete">delete</option>
                                 <option description="Cancel">cancel</option>
+                                <option description="Edit">edit</option>
                                 <option description="Apply">apply</option>
+                                <option description="Delete">delete</option>
                               </selectionValues>
                               <defaultValue/>
                             </field>
@@ -7537,17 +7541,17 @@ cell(
                             </field>
                             <field description="Header Text Behavior" name="headerTextBehavior" type="S">
                               <selectionValues>
+                                <option description="Word Wrap">wordWrap</option>
                                 <option description="Expand Column">expandColumn</option>
                                 <option description="Ellipsis">ellipsis</option>
-                                <option description="Word Wrap">wordWrap</option>
                               </selectionValues>
                               <defaultValue>expandColumn</defaultValue>
                             </field>
                             <field description="Word Break" name="wordBreak" type="S">
                               <selectionValues>
-                                <option description="Break All">break-all</option>
-                                <option description="Break Word">break-word</option>
                                 <option description="Don&apos;t Break">false</option>
+                                <option description="Break Word">break-word</option>
+                                <option description="Break All">break-all</option>
                               </selectionValues>
                               <defaultValue>false</defaultValue>
                             </field>
@@ -7558,16 +7562,16 @@ cell(
                             </field>
                             <field description="Cell Text Horizontal Alignment" name="textAlignHorizontal" type="S">
                               <selectionValues>
-                                <option description="Center">center</option>
                                 <option description="Left">left</option>
+                                <option description="Center">center</option>
                                 <option description="Right">right</option>
                               </selectionValues>
                               <defaultValue>center</defaultValue>
                             </field>
                             <field description="Header Text Horizontal Alignment" name="textAlignHeaderHorizontal" type="S">
                               <selectionValues>
-                                <option description="Center">center</option>
                                 <option description="Left">left</option>
+                                <option description="Center">center</option>
                                 <option description="Right">right</option>
                               </selectionValues>
                               <defaultValue>center</defaultValue>
@@ -7594,16 +7598,16 @@ cell(
                             <field description="Sorter Preset" name="sorterPreset" type="S">
                               <selectionValues>
                                 <option description="Ascending">ASC</option>
-                                <option description="Descending">DESC</option>
                                 <option description="Unset">unset</option>
+                                <option description="Descending">DESC</option>
                               </selectionValues>
                               <defaultValue>unset</defaultValue>
                             </field>
                             <field description="Filtering" name="filtering" type="S">
                               <selectionValues>
-                                <option description="None">none</option>
-                                <option description="Search">search</option>
                                 <option description="Filter">filter</option>
+                                <option description="Search">search</option>
+                                <option description="None">none</option>
                               </selectionValues>
                               <defaultValue>none</defaultValue>
                             </field>
@@ -8496,6 +8500,7 @@ cell(
                                 </records>
                               </table>
                             </value>
+                            <value name="reorderable">1</value>
                           </record>
                         </records>
                       </table>
@@ -10419,10 +10424,10 @@ cell(
                             <field description="Action" name="buttonAction" type="S">
                               <selectionValues>
                                 <option description=""/>
-                                <option description="Edit">edit</option>
-                                <option description="Delete">delete</option>
                                 <option description="Cancel">cancel</option>
+                                <option description="Edit">edit</option>
                                 <option description="Apply">apply</option>
+                                <option description="Delete">delete</option>
                               </selectionValues>
                               <defaultValue/>
                             </field>
@@ -10478,17 +10483,17 @@ cell(
                             </field>
                             <field description="Header Text Behavior" name="headerTextBehavior" type="S">
                               <selectionValues>
+                                <option description="Word Wrap">wordWrap</option>
                                 <option description="Expand Column">expandColumn</option>
                                 <option description="Ellipsis">ellipsis</option>
-                                <option description="Word Wrap">wordWrap</option>
                               </selectionValues>
                               <defaultValue>expandColumn</defaultValue>
                             </field>
                             <field description="Word Break" name="wordBreak" type="S">
                               <selectionValues>
-                                <option description="Break All">break-all</option>
-                                <option description="Break Word">break-word</option>
                                 <option description="Don&apos;t Break">false</option>
+                                <option description="Break Word">break-word</option>
+                                <option description="Break All">break-all</option>
                               </selectionValues>
                               <defaultValue>false</defaultValue>
                             </field>
@@ -10499,16 +10504,16 @@ cell(
                             </field>
                             <field description="Cell Text Horizontal Alignment" name="textAlignHorizontal" type="S">
                               <selectionValues>
-                                <option description="Center">center</option>
                                 <option description="Left">left</option>
+                                <option description="Center">center</option>
                                 <option description="Right">right</option>
                               </selectionValues>
                               <defaultValue>center</defaultValue>
                             </field>
                             <field description="Header Text Horizontal Alignment" name="textAlignHeaderHorizontal" type="S">
                               <selectionValues>
-                                <option description="Center">center</option>
                                 <option description="Left">left</option>
+                                <option description="Center">center</option>
                                 <option description="Right">right</option>
                               </selectionValues>
                               <defaultValue>center</defaultValue>
@@ -10535,16 +10540,16 @@ cell(
                             <field description="Sorter Preset" name="sorterPreset" type="S">
                               <selectionValues>
                                 <option description="Ascending">ASC</option>
-                                <option description="Descending">DESC</option>
                                 <option description="Unset">unset</option>
+                                <option description="Descending">DESC</option>
                               </selectionValues>
                               <defaultValue>unset</defaultValue>
                             </field>
                             <field description="Filtering" name="filtering" type="S">
                               <selectionValues>
-                                <option description="None">none</option>
-                                <option description="Search">search</option>
                                 <option description="Filter">filter</option>
+                                <option description="Search">search</option>
+                                <option description="None">none</option>
                               </selectionValues>
                               <defaultValue>none</defaultValue>
                             </field>
@@ -11792,9 +11797,9 @@ cell(
                           <fields>
                             <field description="Type" name="validatorType" type="S">
                               <selectionValues>
+                                <option description="Regex Validator">regex</option>
                                 <option description="Non-Null Validator">nonNull</option>
                                 <option description="Limits Validator">limits</option>
-                                <option description="Regex Validator">regex</option>
                               </selectionValues>
                               <defaultValue>nonNull</defaultValue>
                             </field>
@@ -17870,9 +17875,9 @@ cell(
                           <fields>
                             <field description="Type" name="validatorType" type="S">
                               <selectionValues>
+                                <option description="Regex Validator">regex</option>
                                 <option description="Non-Null Validator">nonNull</option>
                                 <option description="Limits Validator">limits</option>
-                                <option description="Regex Validator">regex</option>
                               </selectionValues>
                               <defaultValue>nonNull</defaultValue>
                             </field>
@@ -18192,9 +18197,9 @@ cell(
                           <fields>
                             <field description="Type" name="validatorType" type="S">
                               <selectionValues>
+                                <option description="Regex Validator">regex</option>
                                 <option description="Non-Null Validator">nonNull</option>
                                 <option description="Limits Validator">limits</option>
-                                <option description="Regex Validator">regex</option>
                               </selectionValues>
                               <defaultValue>nonNull</defaultValue>
                             </field>
@@ -21859,10 +21864,10 @@ cell(
                             <field description="Action" name="buttonAction" type="S">
                               <selectionValues>
                                 <option description=""/>
-                                <option description="Edit">edit</option>
-                                <option description="Delete">delete</option>
                                 <option description="Cancel">cancel</option>
+                                <option description="Edit">edit</option>
                                 <option description="Apply">apply</option>
+                                <option description="Delete">delete</option>
                               </selectionValues>
                               <defaultValue/>
                             </field>
@@ -21918,17 +21923,17 @@ cell(
                             </field>
                             <field description="Header Text Behavior" name="headerTextBehavior" type="S">
                               <selectionValues>
+                                <option description="Word Wrap">wordWrap</option>
                                 <option description="Expand Column">expandColumn</option>
                                 <option description="Ellipsis">ellipsis</option>
-                                <option description="Word Wrap">wordWrap</option>
                               </selectionValues>
                               <defaultValue>expandColumn</defaultValue>
                             </field>
                             <field description="Word Break" name="wordBreak" type="S">
                               <selectionValues>
-                                <option description="Break All">break-all</option>
-                                <option description="Break Word">break-word</option>
                                 <option description="Don&apos;t Break">false</option>
+                                <option description="Break Word">break-word</option>
+                                <option description="Break All">break-all</option>
                               </selectionValues>
                               <defaultValue>false</defaultValue>
                             </field>
@@ -21939,16 +21944,16 @@ cell(
                             </field>
                             <field description="Cell Text Horizontal Alignment" name="textAlignHorizontal" type="S">
                               <selectionValues>
-                                <option description="Center">center</option>
                                 <option description="Left">left</option>
+                                <option description="Center">center</option>
                                 <option description="Right">right</option>
                               </selectionValues>
                               <defaultValue>center</defaultValue>
                             </field>
                             <field description="Header Text Horizontal Alignment" name="textAlignHeaderHorizontal" type="S">
                               <selectionValues>
-                                <option description="Center">center</option>
                                 <option description="Left">left</option>
+                                <option description="Center">center</option>
                                 <option description="Right">right</option>
                               </selectionValues>
                               <defaultValue>center</defaultValue>
@@ -21975,16 +21980,16 @@ cell(
                             <field description="Sorter Preset" name="sorterPreset" type="S">
                               <selectionValues>
                                 <option description="Ascending">ASC</option>
-                                <option description="Descending">DESC</option>
                                 <option description="Unset">unset</option>
+                                <option description="Descending">DESC</option>
                               </selectionValues>
                               <defaultValue>unset</defaultValue>
                             </field>
                             <field description="Filtering" name="filtering" type="S">
                               <selectionValues>
-                                <option description="None">none</option>
-                                <option description="Search">search</option>
                                 <option description="Filter">filter</option>
+                                <option description="Search">search</option>
+                                <option description="None">none</option>
                               </selectionValues>
                               <defaultValue>none</defaultValue>
                             </field>
@@ -23080,9 +23085,9 @@ cell(
                           <fields>
                             <field description="Type" name="validatorType" type="S">
                               <selectionValues>
+                                <option description="Regex Validator">regex</option>
                                 <option description="Non-Null Validator">nonNull</option>
                                 <option description="Limits Validator">limits</option>
-                                <option description="Regex Validator">regex</option>
                               </selectionValues>
                               <defaultValue>nonNull</defaultValue>
                             </field>
@@ -31630,20 +31635,20 @@ cell(
                             <field description="Aggregation" name="sourceVariablesAggregation" type="S">
                               <selectionValues>
                                 <option description="Average">average</option>
-                                <option description="Minimum">minimum</option>
-                                <option description="Maximum">maximum</option>
-                                <option description="Summation">summation</option>
-                                <option description="First">fist</option>
                                 <option description="Last">last</option>
+                                <option description="Maximum">maximum</option>
+                                <option description="First">fist</option>
+                                <option description="Minimum">minimum</option>
+                                <option description="Summation">summation</option>
                               </selectionValues>
                               <defaultValue>average</defaultValue>
                             </field>
                             <field description="Type" name="sourceVariablesType" type="S">
                               <selectionValues>
                                 <option description="Gauge">gauge</option>
+                                <option description="Absolute">absolute</option>
                                 <option description="Counter">counter</option>
                                 <option description="Derive">derive</option>
-                                <option description="Absolute">absolute</option>
                               </selectionValues>
                               <defaultValue>gauge</defaultValue>
                             </field>
@@ -31687,11 +31692,11 @@ cell(
                             <field description="Aggregation" name="eventDataAggregation" type="S">
                               <selectionValues>
                                 <option description="Average">average</option>
-                                <option description="Minimum">minimum</option>
-                                <option description="Maximum">maximum</option>
-                                <option description="Summation">summation</option>
-                                <option description="First">fist</option>
                                 <option description="Last">last</option>
+                                <option description="Maximum">maximum</option>
+                                <option description="First">fist</option>
+                                <option description="Minimum">minimum</option>
+                                <option description="Summation">summation</option>
                               </selectionValues>
                               <defaultValue>average</defaultValue>
                             </field>
@@ -32463,20 +32468,20 @@ cell(
                             <field description="Aggregation" name="sourceVariablesAggregation" type="S">
                               <selectionValues>
                                 <option description="Average">average</option>
-                                <option description="Minimum">minimum</option>
-                                <option description="Maximum">maximum</option>
-                                <option description="Summation">summation</option>
-                                <option description="First">fist</option>
                                 <option description="Last">last</option>
+                                <option description="Maximum">maximum</option>
+                                <option description="First">fist</option>
+                                <option description="Minimum">minimum</option>
+                                <option description="Summation">summation</option>
                               </selectionValues>
                               <defaultValue>average</defaultValue>
                             </field>
                             <field description="Type" name="sourceVariablesType" type="S">
                               <selectionValues>
                                 <option description="Gauge">gauge</option>
+                                <option description="Absolute">absolute</option>
                                 <option description="Counter">counter</option>
                                 <option description="Derive">derive</option>
-                                <option description="Absolute">absolute</option>
                               </selectionValues>
                               <defaultValue>gauge</defaultValue>
                             </field>
@@ -32520,11 +32525,11 @@ cell(
                             <field description="Aggregation" name="eventDataAggregation" type="S">
                               <selectionValues>
                                 <option description="Average">average</option>
-                                <option description="Minimum">minimum</option>
-                                <option description="Maximum">maximum</option>
-                                <option description="Summation">summation</option>
-                                <option description="First">fist</option>
                                 <option description="Last">last</option>
+                                <option description="Maximum">maximum</option>
+                                <option description="First">fist</option>
+                                <option description="Minimum">minimum</option>
+                                <option description="Summation">summation</option>
                               </selectionValues>
                               <defaultValue>average</defaultValue>
                             </field>
