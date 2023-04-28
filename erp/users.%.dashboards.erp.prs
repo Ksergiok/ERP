@@ -1086,6 +1086,21 @@ addRecords(
                             <value name="onevent">1</value>
                           </record>
                           <record>
+                            <value name="bindingId">5603449188310962176</value>
+                            <value name="target">form/labelTaskInfo:text</value>
+                            <value name="expression">
+&quot;uuid: &quot; + cell({env/value},&quot;nodeId&quot;)</value>
+                            <value name="activator">form/graphTasks:nodeClick@</value>
+                            <value name="onevent">1</value>
+                          </record>
+                          <record>
+                            <value name="bindingId">7896639686448359424</value>
+                            <value name="target">form/labelTaskInfo:text</value>
+                            <value name="expression">string({env/value})</value>
+                            <value name="activator">form/dataTableEditorTasksKanbanView:cellClicked@</value>
+                            <value name="onevent">1</value>
+                          </record>
+                          <record>
                             <value name="bindingId">2959164578804682752</value>
                             <value name="target">form/dataTableEditorTableView:containerStyle</value>
                             <value name="expression">&quot;.ant-table-row:nth-child(&quot;+(integer(cell({env/value}, &quot;recordIndex&quot;))+2)+&quot;) {background:#40a9ff !important};&quot;</value>
@@ -1107,14 +1122,6 @@ addRecords(
   ,{form/comboBoxProject:currentOptions$value}
   )</value>
                             <value name="activator">form/comboBoxProject:mouseClicked@</value>
-                            <value name="onevent">1</value>
-                          </record>
-                          <record>
-                            <value name="bindingId">5603449188310962176</value>
-                            <value name="target">form/labelTaskInfo:text</value>
-                            <value name="expression">
-&quot;uuid: &quot; + cell({env/value},&quot;nodeId&quot;)</value>
-                            <value name="activator">form/graphTasks:nodeClick@</value>
                             <value name="onevent">1</value>
                           </record>
                           <record>
@@ -33233,21 +33240,34 @@ font-weight: bold;
                               <defaultValue>default</defaultValue>
                             </field>
                             <field description="Style" name="style" nullable="true" type="S">
-                              <defaultValue/>
+                              <defaultValue>
+                                <nullValue/>
+                              </defaultValue>
                             </field>
                             <field description="Container Style" name="containerStyle" nullable="true" type="S">
-                              <defaultValue/>
+                              <defaultValue>
+                                <nullValue/>
+                              </defaultValue>
                             </field>
                           </fields>
                         </format>
                         <records>
                           <record>
                             <value name="breakpoint">fullHD</value>
+                            <value name="style"/>
                             <value name="containerStyle">order-id:0*~*active:false*~*gridx:1*~*gridy:1*~*grid-width:12*~*grid-height:2*~*overflow:auto*~*container-style:/*.table-html-snippet{	overflow: hidden;
     background-color: lightgrey;
     border-radius: 10px;
     padding: 10px; }
     */
+    
+    
+    .agg-table-wrapper .ant-table-body .width-calculation-wrapper {
+    display: flex;
+    box-shadow: 2px 2px 5px black;
+    overflow: visible;
+    border-radius: 10px;
+}
     
     
 .agg-table-wrapper .ant-table-header .ant-table-thead tr&gt;th{border: none;}*~*</value>
@@ -33271,6 +33291,14 @@ font-weight: bold;
     border-radius: 10px;
     padding: 10px; }
     */
+    
+    
+    .agg-table-wrapper .ant-table-body .width-calculation-wrapper {
+    display: flex;
+    box-shadow: 2px 2px 5px black;
+    overflow: visible;
+    border-radius: 10px;
+}
     
     
 .agg-table-wrapper .ant-table-header .ant-table-thead tr&gt;th{border: none;}</value>
