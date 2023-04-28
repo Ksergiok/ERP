@@ -7389,7 +7389,19 @@ cell(
 
 .rc-color-picker-trigger{border-radius: 40px;border: none;max-width: 31px;}
 
-.ant-table-cell.without-custom-width.data-table-column.tagsS &gt; div &gt; div &gt; div &gt; span {background-color:#80008040; border-radius:10px;}*~*</value>
+.ant-table-cell.without-custom-width.data-table-column.tagsS &gt; div &gt; div &gt; div &gt; span {background-color:#80008040; border-radius:10px;}
+
+
+
+td.priorityS a[name=&quot;critical&quot;] {
+color: red;
+font-weight: bold;
+}
+
+td.priorityS a[name=&quot;necessary&quot;] {
+color: green;
+font-weight: bold;
+}*~*</value>
                           </record>
                         </records>
                       </table>
@@ -7409,7 +7421,19 @@ cell(
 
 .rc-color-picker-trigger{border-radius: 40px;border: none;max-width: 31px;}
 
-.ant-table-cell.without-custom-width.data-table-column.tagsS &gt; div &gt; div &gt; div &gt; span {background-color:#80008040; border-radius:10px;}</value>
+.ant-table-cell.without-custom-width.data-table-column.tagsS &gt; div &gt; div &gt; div &gt; span {background-color:#80008040; border-radius:10px;}
+
+
+
+td.priorityS a[name=&quot;critical&quot;] {
+color: red;
+font-weight: bold;
+}
+
+td.priorityS a[name=&quot;necessary&quot;] {
+color: green;
+font-weight: bold;
+}</value>
                     <value name="preloaderIcon">
                       <table>
                         <format maxRecords="1" minRecords="1">
@@ -8501,6 +8525,7 @@ cell(
                                   <record>
                                     <value name="name">priorityS</value>
                                     <value name="type">S</value>
+                                    <value name="editor">reference</value>
                                     <value name="editorOptions">
                                       <table>
                                         <format maxRecords="1" minRecords="1">
@@ -31133,21 +31158,16 @@ cell(
                               <defaultValue>default</defaultValue>
                             </field>
                             <field description="Style" name="style" nullable="true" type="S">
-                              <defaultValue>
-                                <nullValue/>
-                              </defaultValue>
+                              <defaultValue/>
                             </field>
                             <field description="Container Style" name="containerStyle" nullable="true" type="S">
-                              <defaultValue>
-                                <nullValue/>
-                              </defaultValue>
+                              <defaultValue/>
                             </field>
                           </fields>
                         </format>
                         <records>
                           <record>
                             <value name="breakpoint">fullHD</value>
-                            <value name="style"/>
                             <value name="containerStyle">order-id:0*~*active:false*~*gridx:9*~*gridy:2*~*grid-width:4*~*grid-height:1*~*overflow:auto*~*</value>
                           </record>
                         </records>
@@ -31971,21 +31991,16 @@ cell(
                               <defaultValue>default</defaultValue>
                             </field>
                             <field description="Style" name="style" nullable="true" type="S">
-                              <defaultValue>
-                                <nullValue/>
-                              </defaultValue>
+                              <defaultValue/>
                             </field>
                             <field description="Container Style" name="containerStyle" nullable="true" type="S">
-                              <defaultValue>
-                                <nullValue/>
-                              </defaultValue>
+                              <defaultValue/>
                             </field>
                           </fields>
                         </format>
                         <records>
                           <record>
                             <value name="breakpoint">fullHD</value>
-                            <value name="style"/>
                             <value name="containerStyle">order-id:0*~*active:false*~*gridx:1*~*gridy:2*~*grid-width:8*~*grid-height:1*~*overflow:auto*~*</value>
                           </record>
                         </records>
@@ -33218,26 +33233,21 @@ cell(
                               <defaultValue>default</defaultValue>
                             </field>
                             <field description="Style" name="style" nullable="true" type="S">
-                              <defaultValue>
-                                <nullValue/>
-                              </defaultValue>
+                              <defaultValue/>
                             </field>
                             <field description="Container Style" name="containerStyle" nullable="true" type="S">
-                              <defaultValue>
-                                <nullValue/>
-                              </defaultValue>
+                              <defaultValue/>
                             </field>
                           </fields>
                         </format>
                         <records>
                           <record>
                             <value name="breakpoint">fullHD</value>
-                            <value name="style"/>
-                            <value name="containerStyle">order-id:0*~*active:false*~*gridx:1*~*gridy:1*~*grid-width:12*~*grid-height:2*~*overflow:auto*~*container-style:.table-html-snippet{	overflow: hidden;
+                            <value name="containerStyle">order-id:0*~*active:false*~*gridx:1*~*gridy:1*~*grid-width:12*~*grid-height:2*~*overflow:auto*~*container-style:/*.table-html-snippet{	overflow: hidden;
     background-color: lightgrey;
     border-radius: 10px;
     padding: 10px; }
-    
+    */
     
     
 .agg-table-wrapper .ant-table-header .ant-table-thead tr&gt;th{border: none;}*~*</value>
@@ -33256,11 +33266,11 @@ cell(
                         </format>
                       </table>
                     </value>
-                    <value name="containerStyle">.table-html-snippet{	overflow: hidden;
+                    <value name="containerStyle">/*.table-html-snippet{	overflow: hidden;
     background-color: lightgrey;
     border-radius: 10px;
     padding: 10px; }
-    
+    */
     
     
 .agg-table-wrapper .ant-table-header .ant-table-thead tr&gt;th{border: none;}</value>

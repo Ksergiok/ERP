@@ -3742,7 +3742,7 @@ filter(
 	)
 	,&quot;&lt;parentS&gt;&lt;S&gt;&lt;F=N&gt;&quot;
 	,&apos;select({.:tasks}, &quot;summary&quot;, &quot;uuid&quot;, {parent})&apos;
-	,&quot;&lt;priorityS&gt;&lt;S&gt;&lt;F=N&gt;&quot;
+	,&quot;&lt;priorityS&gt;&lt;S&gt;&lt;F=N&gt;&lt;E=reference&gt;&quot;
 	,&apos;select({users.admin.models.referenceTable:priorities}, &quot;priority&quot;, &quot;code&quot;, {priority})&apos;
 	,&quot;&lt;color&gt;&lt;C&gt;&lt;F=N&gt;&quot;
 	,&apos;select({users.admin.models.referenceTable:priorities}, &quot;color&quot;, &quot;code&quot;, {priority})&apos;
@@ -5907,7 +5907,7 @@ filter(
 			,&quot;{priority} == 0&quot;
 		)
 		,&quot;&lt;priority0&gt;&lt;S&gt;&lt;E=html&gt;&lt;F=N&gt;&lt;D=Critical&gt;&quot;
-		,&apos;&quot;uuid:&quot; + &quot;&lt;h3&gt;&quot; + {uuid} + &quot;&lt;/h3&gt;&lt;br&gt;&lt;h1&gt; &quot; + {key} + &quot;&lt;/h1&gt;&lt;br&gt;&lt;p&gt; &quot; + {summary} + &quot;&lt;/p&gt;&quot;&apos;
+		,&apos;&quot;&lt;div style=\&apos;background-color:coral;border-radius: 10px;padding: 10px;\&apos;&gt;&lt;h3&gt;&quot;+ &quot;uuid: &quot; + {uuid} + &quot;&lt;/h3&gt;&lt;br&gt;&lt;h1&gt; &quot; + {key} + &quot;&lt;/h1&gt;&lt;br&gt;&lt;p&gt; &quot; + {summary} + &quot;&lt;/p&gt;&lt;/div&gt;&quot; &apos;
 	)
 	,&quot;priority0&quot;
 
@@ -5926,7 +5926,7 @@ filter(
 			,&quot;{priority} == 1&quot;
 		)
 		,&quot;&lt;priority1&gt;&lt;S&gt;&lt;E=html&gt;&lt;F=N&gt;&lt;D=Necessary&gt;&quot;
-		,&apos;&quot;uuid:&quot; + &quot;&lt;h3&gt;&quot; + {uuid} + &quot;&lt;/h3&gt;&lt;br&gt;&lt;h1&gt; &quot; + {key} + &quot;&lt;/h1&gt;&lt;br&gt;&lt;p&gt; &quot; + {summary} + &quot;&lt;/p&gt;&quot;&apos;
+		,&apos;&quot;&lt;div style=\&apos;background-color:lightblue;border-radius: 10px;padding: 10px;\&apos;&gt;&lt;h3&gt;&quot;+ &quot;uuid: &quot; + {uuid} + &quot;&lt;/h3&gt;&lt;br&gt;&lt;h1&gt; &quot; + {key} + &quot;&lt;/h1&gt;&lt;br&gt;&lt;p&gt; &quot; + {summary} + &quot;&lt;/p&gt;&lt;/div&gt;&quot; &apos;
 	)
 	,&quot;priority1&quot;
 
@@ -5945,7 +5945,7 @@ filter(
 			,&quot;{priority} == 2&quot;
 		)
 		,&quot;&lt;priority2&gt;&lt;S&gt;&lt;E=html&gt;&lt;F=N&gt;&lt;D=Optional&gt;&quot;
-		,&apos;&quot;uuid:&quot; + &quot;&lt;h3&gt;&quot; + {uuid} + &quot;&lt;/h3&gt;&lt;br&gt;&lt;h1&gt; &quot; + {key} + &quot;&lt;/h1&gt;&lt;br&gt;&lt;p&gt; &quot; + {summary} + &quot;&lt;/p&gt;&quot;&apos;
+		,&apos;&quot;&lt;div style=\&apos;background-color:yellow;border-radius: 10px;padding: 10px;\&apos;&gt;&lt;h3&gt;&quot;+ &quot;uuid: &quot; + {uuid} + &quot;&lt;/h3&gt;&lt;br&gt;&lt;h1&gt; &quot; + {key} + &quot;&lt;/h1&gt;&lt;br&gt;&lt;p&gt; &quot; + {summary} + &quot;&lt;/p&gt;&lt;/div&gt;&quot; &apos;
 	)
 	,&quot;priority2&quot;
 
@@ -5964,7 +5964,7 @@ filter(
 			,&quot;{priority} == 3&quot;
 		)
 		,&quot;&lt;priority3&gt;&lt;S&gt;&lt;E=html&gt;&lt;F=N&gt;&lt;D=Desirable&gt;&quot;
-		,&apos;&quot;uuid:&quot; + &quot;&lt;h3&gt;&quot; + {uuid} + &quot;&lt;/h3&gt;&lt;br&gt;&lt;h1&gt; &quot; + {key} + &quot;&lt;/h1&gt;&lt;br&gt;&lt;p&gt; &quot; + {summary} + &quot;&lt;/p&gt;&quot;&apos;
+		,&apos;&quot;&lt;div style=\&apos;background-color:lightgrey;border-radius: 10px;padding: 10px;\&apos;&gt;&lt;h3&gt;&quot;+ &quot;uuid: &quot; + {uuid} + &quot;&lt;/h3&gt;&lt;br&gt;&lt;h1&gt; &quot; + {key} + &quot;&lt;/h1&gt;&lt;br&gt;&lt;p&gt; &quot; + {summary} + &quot;&lt;/p&gt;&lt;/div&gt;&quot; &apos;
 	)
 	,&quot;priority3&quot;
 
