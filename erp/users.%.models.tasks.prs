@@ -3305,6 +3305,8 @@ filter(
 	,&apos;select({.:tasks}, &quot;summary&quot;, &quot;uuid&quot;, {parent})&apos;
 	,&quot;&lt;priorityS&gt;&lt;S&gt;&lt;F=N&gt;&quot;
 	,&apos;select({users.admin.models.referenceTable:priorities}, &quot;priority&quot;, &quot;code&quot;, {priority})&apos;
+	,&quot;&lt;color&gt;&lt;C&gt;&lt;F=N&gt;&quot;
+	,&apos;select({users.admin.models.referenceTable:priorities}, &quot;color&quot;, &quot;code&quot;, {priority})&apos;
 	,&quot;&lt;laboriousnessS&gt;&lt;S&gt;&lt;F=N&gt;&quot;
 	,&apos;select({users.admin.models.referenceTable:laboriousness}, &quot;laboriousness&quot;, &quot;code&quot;, {laboriousness})&apos;
 	,&quot;&lt;typeS&gt;&lt;S&gt;&lt;F=N&gt;&quot;

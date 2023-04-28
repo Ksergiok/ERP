@@ -1058,6 +1058,20 @@ addRecords(
                             <value name="onevent">1</value>
                           </record>
                           <record>
+                            <value name="bindingId">2232010846526738432</value>
+                            <value name="target">form/labelTaskInfo:text</value>
+                            <value name="expression">string({env/value})</value>
+                            <value name="activator">form/dataTableEditorTableView:cellClicked@</value>
+                            <value name="onevent">1</value>
+                          </record>
+                          <record>
+                            <value name="bindingId">2959164578804682752</value>
+                            <value name="target">form/dataTableEditorTableView:containerStyle</value>
+                            <value name="expression">&quot;.ant-table-row:nth-child(&quot;+(integer(cell({env/value}, &quot;recordIndex&quot;))+2)+&quot;) {background:#40a9ff !important};&quot;</value>
+                            <value name="activator">form/dataTableEditorTableView:cellClicked@</value>
+                            <value name="onevent">1</value>
+                          </record>
+                          <record>
                             <value name="bindingId">5386651716219424768</value>
                             <value name="target">form/comboBoxProject:options</value>
                             <value name="expression">{users.admin.models.referenceTable:getProjectsList()}</value>
@@ -1080,20 +1094,6 @@ addRecords(
                             <value name="expression">
 &quot;uuid: &quot; + cell({env/value},&quot;nodeId&quot;)</value>
                             <value name="activator">form/graphTasks:nodeClick@</value>
-                            <value name="onevent">1</value>
-                          </record>
-                          <record>
-                            <value name="bindingId">2232010846526738432</value>
-                            <value name="target">form/labelTaskInfo:text</value>
-                            <value name="expression">string({env/value})</value>
-                            <value name="activator">form/dataTableEditorTableView:cellClicked@</value>
-                            <value name="onevent">1</value>
-                          </record>
-                          <record>
-                            <value name="bindingId">2959164578804682752</value>
-                            <value name="target">form/dataTableEditorTableView:containerStyle</value>
-                            <value name="expression">&quot;#toolbar &gt; div:nth-child(2) &gt; div.component-system-button.round.disabled.toolbar-import-button.toolbar-button,#toolbar &gt; div:nth-child(2) &gt; div.component-system-button.round.disabled.toolbar-reset-button.toolbar-button{display:none;} .ant-table-row:nth-child(&quot;+(integer(cell({env/value}, &quot;recordIndex&quot;))+2)+&quot;) {background:#40a9ff !important};&quot;</value>
-                            <value name="activator">form/dataTableEditorTableView:cellClicked@</value>
                             <value name="onevent">1</value>
                           </record>
                           <record>
@@ -2217,7 +2217,7 @@ cell(
                       </table>
                     </value>
                     <value name="tabPosition">left</value>
-                    <value name="activeTab">tabDashboard</value>
+                    <value name="activeTab">tabTasks</value>
                     <value name="externalButtons">
                       <table>
                         <format maxRecords="2147483647">
@@ -7351,17 +7351,24 @@ cell(
                               <defaultValue>default</defaultValue>
                             </field>
                             <field description="Style" name="style" nullable="true" type="S">
-                              <defaultValue/>
+                              <defaultValue>
+                                <nullValue/>
+                              </defaultValue>
                             </field>
                             <field description="Container Style" name="containerStyle" nullable="true" type="S">
-                              <defaultValue/>
+                              <defaultValue>
+                                <nullValue/>
+                              </defaultValue>
                             </field>
                           </fields>
                         </format>
                         <records>
                           <record>
                             <value name="breakpoint">fullHD</value>
-                            <value name="containerStyle">order-id:0*~*active:false*~*gridx:1*~*gridy:1*~*grid-width:12*~*grid-height:2*~*overflow:auto*~*container-style:#toolbar &gt; div:nth-child(2) &gt; div.component-system-button.round.disabled.toolbar-import-button.toolbar-button,#toolbar &gt; div:nth-child(2) &gt; div.component-system-button.round.disabled.toolbar-reset-button.toolbar-button{display:none;}*~*</value>
+                            <value name="style"/>
+                            <value name="containerStyle">order-id:0*~*active:false*~*gridx:1*~*gridy:1*~*grid-width:12*~*grid-height:2*~*overflow:auto*~*container-style:#toolbar &gt; div:nth-child(2) &gt; div.component-system-button.round.disabled.toolbar-import-button.toolbar-button,#toolbar &gt; div:nth-child(2) &gt; div.component-system-button.round.disabled.toolbar-reset-button.toolbar-button{display:none;}
+
+.rc-color-picker-trigger{border-radius: 40px;border: none;max-width: 31px;} *~*</value>
                           </record>
                         </records>
                       </table>
@@ -7377,7 +7384,9 @@ cell(
                         </format>
                       </table>
                     </value>
-                    <value name="containerStyle">#toolbar &gt; div:nth-child(2) &gt; div.component-system-button.round.disabled.toolbar-import-button.toolbar-button,#toolbar &gt; div:nth-child(2) &gt; div.component-system-button.round.disabled.toolbar-reset-button.toolbar-button{display:none;}</value>
+                    <value name="containerStyle">#toolbar &gt; div:nth-child(2) &gt; div.component-system-button.round.disabled.toolbar-import-button.toolbar-button,#toolbar &gt; div:nth-child(2) &gt; div.component-system-button.round.disabled.toolbar-reset-button.toolbar-button{display:none;}
+
+.rc-color-picker-trigger{border-radius: 40px;border: none;max-width: 31px;} </value>
                     <value name="preloaderIcon">
                       <table>
                         <format maxRecords="1" minRecords="1">
@@ -7633,6 +7642,12 @@ cell(
                           <record>
                             <value name="name">score</value>
                             <value name="width">24</value>
+                          </record>
+                          <record>
+                            <value name="name">color</value>
+                            <value name="visibleLength">0</value>
+                            <value name="sorter">0</value>
+                            <value name="width">30</value>
                           </record>
                         </records>
                       </table>
@@ -8425,6 +8440,44 @@ cell(
                                     <value name="name">tagsS</value>
                                     <value name="type">S</value>
                                     <value name="nullable">1</value>
+                                    <value name="editorOptions">
+                                      <table>
+                                        <format maxRecords="1" minRecords="1">
+                                          <fields>
+                                            <field description="Editor Options" name="options" type="S">
+                                              <defaultValue/>
+                                            </field>
+                                          </fields>
+                                        </format>
+                                        <records>
+                                          <record/>
+                                        </records>
+                                      </table>
+                                    </value>
+                                  </record>
+                                  <record>
+                                    <value name="name">color</value>
+                                    <value name="type">C</value>
+                                    <value name="description"> </value>
+                                    <value name="inline">1</value>
+                                    <value name="editorOptions">
+                                      <table>
+                                        <format maxRecords="1" minRecords="1">
+                                          <fields>
+                                            <field description="Editor Options" name="options" type="S">
+                                              <defaultValue/>
+                                            </field>
+                                          </fields>
+                                        </format>
+                                        <records>
+                                          <record/>
+                                        </records>
+                                      </table>
+                                    </value>
+                                  </record>
+                                  <record>
+                                    <value name="name">priorityS</value>
+                                    <value name="type">S</value>
                                     <value name="editorOptions">
                                       <table>
                                         <format maxRecords="1" minRecords="1">
@@ -30784,21 +30837,16 @@ cell(
                               <defaultValue>default</defaultValue>
                             </field>
                             <field description="Style" name="style" nullable="true" type="S">
-                              <defaultValue>
-                                <nullValue/>
-                              </defaultValue>
+                              <defaultValue/>
                             </field>
                             <field description="Container Style" name="containerStyle" nullable="true" type="S">
-                              <defaultValue>
-                                <nullValue/>
-                              </defaultValue>
+                              <defaultValue/>
                             </field>
                           </fields>
                         </format>
                         <records>
                           <record>
                             <value name="breakpoint">fullHD</value>
-                            <value name="style"/>
                             <value name="containerStyle">order-id:0*~*active:false*~*gridx:1*~*gridy:2*~*grid-width:4*~*grid-height:1*~*overflow:auto*~*</value>
                           </record>
                         </records>
@@ -31428,21 +31476,16 @@ cell(
                               <defaultValue>default</defaultValue>
                             </field>
                             <field description="Style" name="style" nullable="true" type="S">
-                              <defaultValue>
-                                <nullValue/>
-                              </defaultValue>
+                              <defaultValue/>
                             </field>
                             <field description="Container Style" name="containerStyle" nullable="true" type="S">
-                              <defaultValue>
-                                <nullValue/>
-                              </defaultValue>
+                              <defaultValue/>
                             </field>
                           </fields>
                         </format>
                         <records>
                           <record>
                             <value name="breakpoint">fullHD</value>
-                            <value name="style"/>
                             <value name="containerStyle">order-id:0*~*active:false*~*gridx:1*~*gridy:3*~*grid-width:12*~*grid-height:1*~*overflow:auto*~*</value>
                           </record>
                         </records>
@@ -32266,21 +32309,16 @@ cell(
                               <defaultValue>default</defaultValue>
                             </field>
                             <field description="Style" name="style" nullable="true" type="S">
-                              <defaultValue>
-                                <nullValue/>
-                              </defaultValue>
+                              <defaultValue/>
                             </field>
                             <field description="Container Style" name="containerStyle" nullable="true" type="S">
-                              <defaultValue>
-                                <nullValue/>
-                              </defaultValue>
+                              <defaultValue/>
                             </field>
                           </fields>
                         </format>
                         <records>
                           <record>
                             <value name="breakpoint">fullHD</value>
-                            <value name="style"/>
                             <value name="containerStyle">order-id:0*~*active:false*~*gridx:5*~*gridy:2*~*grid-width:8*~*grid-height:1*~*overflow:auto*~*</value>
                           </record>
                         </records>
@@ -32523,7 +32561,9 @@ cell(
                               </defaultValue>
                             </field>
                             <field description="Group" name="group" nullable="true" type="S">
-                              <defaultValue/>
+                              <defaultValue>
+                                <nullValue/>
+                              </defaultValue>
                             </field>
                           </fields>
                         </format>

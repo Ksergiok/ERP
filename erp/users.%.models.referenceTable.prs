@@ -5958,6 +5958,25 @@ public class %ScriptClassNamePattern% implements FunctionImplementation
                               </table>
                             </value>
                           </record>
+                          <record>
+                            <value name="name">color</value>
+                            <value name="type">C</value>
+                            <value name="inline">1</value>
+                            <value name="editorOptions">
+                              <table>
+                                <format maxRecords="1" minRecords="1">
+                                  <fields>
+                                    <field description="Editor Options" name="options" type="S">
+                                      <defaultValue/>
+                                    </field>
+                                  </fields>
+                                </format>
+                                <records>
+                                  <record/>
+                                </records>
+                              </table>
+                            </value>
+                          </record>
                         </records>
                       </table>
                     </value>
