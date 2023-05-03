@@ -935,7 +935,20 @@ addRecords(
                             <value name="bindingId">23045053225762816</value>
                             <value name="expression">{form/:logout()}</value>
                             <value name="activator">form/tabbedPanelMain:buttonClicked@</value>
+                            <value name="condition">cell({env/value}) == 
+ &quot;logOutButton&quot;</value>
                             <value name="onevent">1</value>
+                          </record>
+                          <record>
+                            <value name="bindingId">5866450868876101632</value>
+                            <value name="target">form/:style</value>
+                            <value name="expression">&quot;    mix-blend-mode: difference;    filter: brightness(0.8);&quot;</value>
+                            <value name="activator">form/tabbedPanelMain:buttonClicked@</value>
+                            <value name="condition">cell({env/value}) == &quot;darkMode&quot;</value>
+                            <value name="onevent">1</value>
+                          </record>
+                          <record>
+                            <value name="bindingId">494006220837931008</value>
                           </record>
                           <record>
                             <value name="bindingId">4985882118057961472</value>
@@ -1195,7 +1208,10 @@ cell(
                         </format>
                       </table>
                     </value>
-                    <value name="style"/>
+                    <value name="style">/*&#xd;
+    mix-blend-mode: difference;&#xd;
+    filter: brightness(0.8);&#xd;
+*/</value>
                     <value name="visibleChildren">
                       <table>
                         <format maxRecords="2147483647">
@@ -2176,7 +2192,15 @@ cell(
                         <records>
                           <record>
                             <value name="breakpoint">fullHD</value>
-                            <value name="containerStyle">order-id:0*~*active:false*~*gridx:1*~*gridy:1*~*grid-width:12*~*grid-height:2*~*overflow:auto*~*container-style:padding:16px;*~*</value>
+                            <value name="containerStyle">order-id:0*~*active:false*~*gridx:1*~*gridy:1*~*grid-width:12*~*grid-height:2*~*overflow:auto*~*container-style:padding:16px;
+
+
+element.style {
+    /* display: block; */
+}
+.ant-tabs-extra-content {
+    display: block;
+}*~*</value>
                           </record>
                         </records>
                       </table>
@@ -2192,7 +2216,15 @@ cell(
                         </format>
                       </table>
                     </value>
-                    <value name="containerStyle">padding:16px;</value>
+                    <value name="containerStyle">padding:16px;
+
+
+element.style {
+    /* display: block; */
+}
+.ant-tabs-extra-content {
+    display: block;
+}</value>
                     <value name="preloaderIcon">
                       <table>
                         <format maxRecords="1" minRecords="1">
@@ -2269,7 +2301,7 @@ cell(
                       </table>
                     </value>
                     <value name="tabPosition">left</value>
-                    <value name="activeTab">tabArticles</value>
+                    <value name="activeTab">tabTasks</value>
                     <value name="externalButtons">
                       <table>
                         <format maxRecords="2147483647">
@@ -2294,6 +2326,11 @@ cell(
                           </fields>
                         </format>
                         <records>
+                          <record>
+                            <value name="id">darkMode</value>
+                            <value name="description">Dark mode</value>
+                            <value name="buttonStyle">margin-bottom:6px;</value>
+                          </record>
                           <record>
                             <value name="id">logOutButton</value>
                             <value name="description">Log Out</value>
@@ -4872,7 +4909,7 @@ cell(
                       </table>
                     </value>
                     <value name="tabType">card</value>
-                    <value name="activeTab">tabGraphView</value>
+                    <value name="activeTab">tabTableView</value>
                     <value name="externalButtons">
                       <table>
                         <format maxRecords="2147483647">
@@ -16693,7 +16730,47 @@ th:nth-child(1){display:none;}</value>
                         </format>
                       </table>
                     </value>
-                    <value name="text"># Markdown here</value>
+                    <value name="text"># Header 1
+## Header 2
+
+`
+Code block
+`
+
+&quot;&quot;&quot;
+mulit line quote
+&quot;&quot;&quot;
+
+&gt; single line quote
+
+ 1. list
+  1. list
+ 2. list
+
+Some test
+
+
+----------
+
+
+ - list
+    - list
+
+*Italic*
+
+**Bold**
+
+__*Italic Bold*__
+
+## Heading ##
+
+ * bullet
+  * bullet
+     * bullet
+         * bullet
+
+[Description][1]
+[1]: http://link.com</value>
                     <value name="placeholder"># Markdown here</value>
                   </record>
                 </records>
@@ -17401,21 +17478,16 @@ th:nth-child(1){display:none;}</value>
                               <defaultValue>default</defaultValue>
                             </field>
                             <field description="Style" name="style" nullable="true" type="S">
-                              <defaultValue>
-                                <nullValue/>
-                              </defaultValue>
+                              <defaultValue/>
                             </field>
                             <field description="Container Style" name="containerStyle" nullable="true" type="S">
-                              <defaultValue>
-                                <nullValue/>
-                              </defaultValue>
+                              <defaultValue/>
                             </field>
                           </fields>
                         </format>
                         <records>
                           <record>
                             <value name="breakpoint">fullHD</value>
-                            <value name="style"/>
                             <value name="containerStyle">order-id:0*~*active:false*~*gridx:6*~*gridy:1*~*grid-width:3*~*grid-height:1*~*overflow:auto*~*</value>
                           </record>
                         </records>
@@ -26408,7 +26480,7 @@ th:nth-child(1){display:none;}</value>
                                             <field name="title" type="S">
                                               <defaultValue/>
                                             </field>
-                                            <field editor="html" name="article" type="S">
+                                            <field editor="textarea" name="article" type="S">
                                               <defaultValue/>
                                             </field>
                                             <field name="parent" nullable="true" type="S">
@@ -26435,7 +26507,216 @@ th:nth-child(1){display:none;}</value>
                                             <value name="uuid">0</value>
                                             <value name="code">0</value>
                                             <value name="title">Статья 1</value>
-                                            <value name="article">&lt;h1&gt;Hi, there!&lt;/h1&gt;</value>
+                                            <value name="article">≡ Краткое руководство Markdown
+
+# Заголовок h1
+## Заголовок h2
+### Заголовок h3
+#### Заголовок h4
+##### Заголовок h5
+###### Заголовок h6
+
+Абзац Markdown. Пример:
+
+Lorem ipsum dolor sit amet... Абзацы создаются при помощи пустой строки.
+
+Для переноса строки делаем два пробела ` ` ` ` в конце (предыдущей) строки
+Перенос строки
+
+Получается? Отлично! :+1:
+
+Текст с жирным начертанием (**strong**) и курсив (*italic*) в Markdown:
+
+_1 символ_ `_` или `*` для наклонного текста
+__2 символа__  `__` или `**` для жирного текста
+***3 символа*** `___` или `***` для наклонного и жирного одновременно.
+
+Перечеркнутый текст. 2 тильды `~` до и после текста - текст как перечеркнутый - ~~Зачеркнуто~~
+
+Горизонтальная черта. `hr` - 3 звездочки или 3 дефиса
+
+***
+
+♦ Маркированный список. Для разметки неупорядоченных списков `*`, `-`, `+`:
+
+* текст
+* текст
+* текст
+
+Вложенные пункты. 4 пробела перед маркером:
+
+* элемент маркированного списка
+* элемент маркированного списка
+    * вложенный текст
+    * вложенный текст
+
+Нумерованный список. Главное, чтобы перед элементом списка стояла цифра с точкой.
+
+1. элемент нумерованного списка
+2. элемент нумерованного списка
+    1. вложенный
+    2. вложенный
+
+Можно сделать так:
+
+0. текст
+0. текст
+0. текст
+
+Список с абзацами:
+
+* Текст
+* Текст
+* Текст
+
+    Текст (4 пробела или `Tab`).
+
+---
+
+##### ♦ Ссылки Markdown
+
+Здесь - [ссылка с title](http://example.com/ &quot;Привет!&quot;).
+
+Здесь - [ссылка без title](http://example.com/).
+
+Ссылки с разметкой как у сносок.
+
+Здесь - [ссылка][1] продолжение текста [ссылка][2] продолжение текста [ссылка][id]. [Просто ссылка][] без указания id.
+
+[1]: http://example.com/ &quot;Пример Title&quot;
+[2]: http://example.com/page
+[id]: http://example.com/links (Пример Title)
+[Просто ссылка]: http://example.com/short
+
+Ссылки-сноски можно располагать в любом месте документа.
+
+---
+
+##### Цитаты в Markdown - cимвол `&gt;`.
+
+&gt; Lorem ipsum dolor sit amet.
+&gt; Lorem ipsum dolor sit amet.
+&gt;
+&gt; Lorem ipsum dolor sit amet.
+
+В цитаты можно помещать всё что угодно, в том числе вложенные цитаты:
+
+&gt; ### Заголовок.
+&gt;
+&gt; 1. список
+&gt; 2. список
+&gt;
+&gt; &gt; Вложенная цитата.
+&gt;
+&gt; Исходный код (4 пробела в начале строки):
+&gt;
+&gt;     $source = file_get_contents(&apos;example.php&apos;);
+
+##### Исходный код в Markdown
+
+В GFM - поставить 3 апострофа (где `Ё`) до и после кода. Можно указать язык исходного кода.
+
+```html
+&lt;div class=&quot;as-header&quot;&gt;
+    &lt;h1&gt;Матрёшка&lt;/h1&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet.&lt;/p&gt;
+&lt;/div&gt;
+```
+
+```javascript
+    $(function() { ... });
+```
+
+Для вставки кода внутри предложений - надо обрамить в апострофы (где `Ё`).
+
+Пример: `&lt;div class=&quot;as-markdown&quot;&gt;`.
+
+Если внутри кода есть апостроф, то код надо обрамить двойными апострофами: ``Бла-бла (`) тут.``
+
+##### Картинки в Markdown
+
+Картинка без alt текста
+
+![](//placehold.it/200x100)
+
+Картинка с alt и title:
+
+![Alt text](//placehold.it/200x100 &quot;Здесь title&quot;)
+
+Картинка-ссылка:
+Подсказка: синтаксис как у ссылок, только перед открывающей квадратной скобкой ставится восклицательный знак.
+
+[![Alt text](//placehold.it/200x100)](http://example.com/)
+
+Картинки-сноски:
+
+![Картинка][image1]
+![Картинка][image2]
+![Картинка][image3]
+
+[image1]: //placehold.it/200x100
+[image2]: //placehold.it/150x100
+[image3]: //placehold.it/100x100
+
+---
+
+##### Использование HTML внутри Markdown
+
+Mожно смешивать Markdown и HTML. Если на какие-то элементы нужно поставить классы или атрибуты, используем HTML:
+
+&gt; Выделим слова без помощи * и _ . Например, это &lt;em class=&quot;as-italic&quot;&gt;курсив&lt;/em&gt; и это тоже &lt;i&gt;курсив&lt;/i&gt;. А вот так уже &lt;b&gt;strong&lt;/b&gt;, и так тоже &lt;strong&gt;strong&lt;/strong&gt;.
+
+Можно и наоборот, внутри HTML-тегов использовать Markdown.
+
+&lt;div class=&quot;as-markdown&quot;&gt;
+
+###### Markdown внутри HTML. Пример:
+
+Выделять слова можно при помощи `*` и `_` . Например, это _курсив_ и это тоже *italic*. А вот так уже __strong__, и так тоже **strong**.
+
+&lt;/div&gt;
+
+---
+
+##### Таблицы
+
+В чистом Маркдауне нет синтаксиса для таблиц, а в GFM есть. Рисуем:
+
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+
+Можно по бокам линии нарисовать:
+
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
+
+Можно управлять выравниванием столбцов при помощи двоеточия:
+
+| Left-Aligned  | Center Aligned  | Right Aligned |
+|:------------- |:---------------:| -------------:|
+| col 3 is      | какой-то текст  |   **my text** |
+| col 2 is      | центр           |           $123|
+| Content Cell  | бука            |         ~~$7~~|
+
+Внутри таблиц можно использовать ссылки, наклонный, жирный или зачеркнутый текст.
+
+---
+
+♦ Для всего остального есть обычный HTML.
+
+---
+
+###### Links:
+
+ * &lt;small&gt;[markdown-it](https://github.com/markdown-it/markdown-it) for Markdown parsing&lt;/small&gt;
+ * &lt;small&gt;[CodeMirror](http://codemirror.net/) for the awesome syntax-highlighted editor&lt;/small&gt;
+ * &lt;small&gt;[Live (Github-flavored)](https://github.com/jbt/markdown-editor) Markdown Editor&lt;/small&gt;
+ * &lt;small&gt;[highlight.js](http://softwaremaniacs.org/soft/highlight/en/) for syntax highlighting in output code blocks&lt;/small&gt;
+ * &lt;small&gt;[js-deflate](https://github.com/dankogai/js-deflate) for gzipping of data to make it fit in URLs&lt;/small&gt;</value>
                                             <value name="parent"/>
                                             <value name="tags">
                                               <table>
@@ -26479,7 +26760,7 @@ th:nth-child(1){display:none;}</value>
                                         </records>
                                       </table>
                                     </value>
-                                    <value name="width">10</value>
+                                    <value name="width">72</value>
                                   </record>
                                   <record>
                                     <value name="nodeId">1</value>
@@ -26501,7 +26782,7 @@ th:nth-child(1){display:none;}</value>
                                             <field name="title" type="S">
                                               <defaultValue/>
                                             </field>
-                                            <field editor="html" name="article" type="S">
+                                            <field editor="textarea" name="article" type="S">
                                               <defaultValue/>
                                             </field>
                                             <field name="parent" nullable="true" type="S">
@@ -26528,7 +26809,10 @@ th:nth-child(1){display:none;}</value>
                                             <value name="uuid">1</value>
                                             <value name="code">1</value>
                                             <value name="title">Статья 2</value>
-                                            <value name="article">Статья 2 loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun lloren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun loren ipsun oren ipsun loren ipsun loren ipsun loren ipsun </value>
+                                            <value name="article"># Article 2
+
+1. list 1
+2. list 2</value>
                                             <value name="parent"/>
                                             <value name="relatedArticles">
                                               <table>
@@ -26550,7 +26834,7 @@ th:nth-child(1){display:none;}</value>
                                         </records>
                                       </table>
                                     </value>
-                                    <value name="width">32</value>
+                                    <value name="width">11</value>
                                   </record>
                                   <record>
                                     <value name="nodeId">a</value>
@@ -26572,7 +26856,7 @@ th:nth-child(1){display:none;}</value>
                                             <field name="title" type="S">
                                               <defaultValue/>
                                             </field>
-                                            <field editor="html" name="article" type="S">
+                                            <field editor="textarea" name="article" type="S">
                                               <defaultValue/>
                                             </field>
                                             <field name="parent" nullable="true" type="S">
@@ -26599,7 +26883,7 @@ th:nth-child(1){display:none;}</value>
                                             <value name="uuid">a</value>
                                             <value name="code">2</value>
                                             <value name="title">Статья 2.1</value>
-                                            <value name="article">Статья 2.1</value>
+                                            <value name="article">## Article 2.1</value>
                                             <value name="parent">1</value>
                                           </record>
                                         </records>
@@ -26627,7 +26911,7 @@ th:nth-child(1){display:none;}</value>
                                             <field name="title" type="S">
                                               <defaultValue/>
                                             </field>
-                                            <field editor="html" name="article" type="S">
+                                            <field editor="textarea" name="article" type="S">
                                               <defaultValue/>
                                             </field>
                                             <field name="parent" nullable="true" type="S">
@@ -26654,6 +26938,7 @@ th:nth-child(1){display:none;}</value>
                                             <value name="uuid">3</value>
                                             <value name="code">3</value>
                                             <value name="title">Статья 2.2</value>
+                                            <value name="article">## Article2.2</value>
                                             <value name="parent">1</value>
                                             <value name="tags">
                                               <table>
@@ -26697,7 +26982,7 @@ th:nth-child(1){display:none;}</value>
                                             <field name="title" type="S">
                                               <defaultValue/>
                                             </field>
-                                            <field editor="html" name="article" type="S">
+                                            <field editor="textarea" name="article" type="S">
                                               <defaultValue/>
                                             </field>
                                             <field name="parent" nullable="true" type="S">
@@ -26724,6 +27009,7 @@ th:nth-child(1){display:none;}</value>
                                             <value name="uuid">4</value>
                                             <value name="code">4</value>
                                             <value name="title">Статья 2.1.1</value>
+                                            <value name="article">### Article 2.1.1</value>
                                             <value name="parent">a</value>
                                             <value name="tags">
                                               <table>
@@ -26767,7 +27053,7 @@ th:nth-child(1){display:none;}</value>
                                             <field name="title" type="S">
                                               <defaultValue/>
                                             </field>
-                                            <field editor="html" name="article" type="S">
+                                            <field editor="textarea" name="article" type="S">
                                               <defaultValue/>
                                             </field>
                                             <field name="parent" nullable="true" type="S">
@@ -26794,6 +27080,7 @@ th:nth-child(1){display:none;}</value>
                                             <value name="uuid">5</value>
                                             <value name="code">5</value>
                                             <value name="title">Статья 3</value>
+                                            <value name="article"># Article 3</value>
                                             <value name="parent"/>
                                           </record>
                                         </records>
@@ -26894,7 +27181,7 @@ th:nth-child(1){display:none;}</value>
                                             <field name="title" type="S">
                                               <defaultValue/>
                                             </field>
-                                            <field editor="html" name="article" type="S">
+                                            <field editor="textarea" name="article" type="S">
                                               <defaultValue/>
                                             </field>
                                             <field name="parent" nullable="true" type="S">
@@ -26932,7 +27219,7 @@ th:nth-child(1){display:none;}</value>
                                             <value name="uuid">a</value>
                                             <value name="code">2</value>
                                             <value name="title">Статья 2.1</value>
-                                            <value name="article">Статья 2.1</value>
+                                            <value name="article">## Article 2.1</value>
                                             <value name="parent">1</value>
                                             <value name="leftNode">1</value>
                                             <value name="relation">parent</value>
@@ -26966,7 +27253,7 @@ th:nth-child(1){display:none;}</value>
                                             <field name="title" type="S">
                                               <defaultValue/>
                                             </field>
-                                            <field editor="html" name="article" type="S">
+                                            <field editor="textarea" name="article" type="S">
                                               <defaultValue/>
                                             </field>
                                             <field name="parent" nullable="true" type="S">
@@ -27004,6 +27291,7 @@ th:nth-child(1){display:none;}</value>
                                             <value name="uuid">3</value>
                                             <value name="code">3</value>
                                             <value name="title">Статья 2.2</value>
+                                            <value name="article">## Article2.2</value>
                                             <value name="parent">1</value>
                                             <value name="tags">
                                               <table>
@@ -27053,7 +27341,7 @@ th:nth-child(1){display:none;}</value>
                                             <field name="title" type="S">
                                               <defaultValue/>
                                             </field>
-                                            <field editor="html" name="article" type="S">
+                                            <field editor="textarea" name="article" type="S">
                                               <defaultValue/>
                                             </field>
                                             <field name="parent" nullable="true" type="S">
@@ -27091,6 +27379,7 @@ th:nth-child(1){display:none;}</value>
                                             <value name="uuid">4</value>
                                             <value name="code">4</value>
                                             <value name="title">Статья 2.1.1</value>
+                                            <value name="article">### Article 2.1.1</value>
                                             <value name="parent">a</value>
                                             <value name="tags">
                                               <table>
@@ -33615,14 +33904,10 @@ width:35px;
                               <defaultValue>default</defaultValue>
                             </field>
                             <field description="Style" name="style" nullable="true" type="S">
-                              <defaultValue>
-                                <nullValue/>
-                              </defaultValue>
+                              <defaultValue/>
                             </field>
                             <field description="Container Style" name="containerStyle" nullable="true" type="S">
-                              <defaultValue>
-                                <nullValue/>
-                              </defaultValue>
+                              <defaultValue/>
                             </field>
                           </fields>
                         </format>
@@ -35278,7 +35563,7 @@ else&#xd;
 &#xd;
 &lt;/script&gt;&#xd;
 &#xd;
-&lt;button type=&quot;button&quot; onclick=&quot;convertMarkdown()&quot;)&gt;Refresh&lt;/button&gt;&#xd;
+&lt;button type=&quot;button&quot; onclick=&quot;convertMarkdown()&quot;) style=&apos;     -webkit-text-size-adjust: 100%;     -webkit-tap-highlight-color: rgba(0,0,0,0);     --antd-wave-shadow-color: #1890ff;     --scroll-bar: 0;     --uiActiveColor: #4cb2e6;     --uiDesktopBackColor: #ededed;     --uiComponentBorder: solid 1px #e0e0e0;     --uiComponentBorderRadius: 4px;     --uiInputBorder: solid 1px #dbdbdb;     --uiInputBackground: #fafafa;     --uiSystemFont: Roboto,Arial,Helvetica,sans-serif;     --uiIconSize: 16px;     --mainActionColor: #4cb2e6;     --mainActionHoverColor: #54c5ff;     --mainActionActiveColor: #1897d6;     --auxiliaryActionColor: #6fb83b;     --auxiliaryActionHoverColor: #7ed143;     --auxiliaryActionActiveColor: #5b9c2c;     --criticalActionColor: #e36060;     --criticalActionHoverColor: #fc6b6b;     --criticalActionActiveColor: #a63535;     --selectDefaultFontSize: 13px;     --selectLargeFontSize: 15px;     --selectMinPadding: 4px;     --selectMidPadding: 8px;     --selectSmallHeight: 24px;     --selectDefaultHeight: 32px;     --selectLargeHeight: 40px;     --selectPlaceholderDefaultColor: #c2c2c2;     --selectArrowDefaultColor: #607990;     list-style: none;     box-sizing: border-box;     -webkit-font-smoothing: subpixel-antialiased;     touch-action: manipulation;     margin: 0;     font-family: inherit;     overflow: visible;     text-transform: none;     display: flex;     flex-direction: row;     align-items: center;     justify-content: center;     transition: .3s;     height: 32px;     border-radius: 4px;     line-height: 18px;     cursor: pointer;     border: none;     user-select: none;     width: auto!important;     -webkit-appearance: button;     min-width: 120px;     padding: 4px 14px;     font-size: 13px;     font-weight: 400;     color: #fff;     background-color: var(--mainActionHoverColor);&apos;&gt;Refresh&lt;/button&gt;&#xd;
 </value>
                     <value name="scriptsAllowed">1</value>
                   </record>
