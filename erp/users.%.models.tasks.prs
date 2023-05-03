@@ -3289,6 +3289,25 @@ filter(
                               </table>
                             </value>
                           </record>
+                          <record>
+                            <value name="name">filterExpression</value>
+                            <value name="type">S</value>
+                            <value name="nullable">1</value>
+                            <value name="editorOptions">
+                              <table>
+                                <format maxRecords="1" minRecords="1">
+                                  <fields>
+                                    <field description="Editor Options" name="options" type="S">
+                                      <defaultValue/>
+                                    </field>
+                                  </fields>
+                                </format>
+                                <records>
+                                  <record/>
+                                </records>
+                              </table>
+                            </value>
+                          </record>
                         </records>
                       </table>
                     </value>
@@ -3300,6 +3319,7 @@ filter(
 	{.:}
 	,&quot;getTasksByProjectKanbanViewRS&quot;
 	,{projectUuid}
+	,{filterExpression}
 )</value>
           </record>
           <record>
@@ -3728,6 +3748,25 @@ filter(
                               </table>
                             </value>
                           </record>
+                          <record>
+                            <value name="name">filterExpression</value>
+                            <value name="type">S</value>
+                            <value name="nullable">1</value>
+                            <value name="editorOptions">
+                              <table>
+                                <format maxRecords="1" minRecords="1">
+                                  <fields>
+                                    <field description="Editor Options" name="options" type="S">
+                                      <defaultValue/>
+                                    </field>
+                                  </fields>
+                                </format>
+                                <records>
+                                  <record/>
+                                </records>
+                              </table>
+                            </value>
+                          </record>
                         </records>
                       </table>
                     </value>
@@ -3735,27 +3774,30 @@ filter(
                 </records>
               </table>
             </value>
-            <value name="expression">addColumns(
-	filter(
-		{.:tasks}
-		,{projectUuid}+ &quot;== {projectUuid}&quot;
+            <value name="expression">filter(
+	addColumns(
+		filter(
+			{.:tasks}
+			,{projectUuid}+ &quot;== {projectUuid}&quot;
+		)
+		,&quot;&lt;parentS&gt;&lt;S&gt;&lt;F=N&gt;&quot;
+		,&apos;select({.:tasks}, &quot;summary&quot;, &quot;uuid&quot;, {parent})&apos;
+		,&quot;&lt;priorityS&gt;&lt;S&gt;&lt;F=N&gt;&lt;E=reference&gt;&quot;
+		,&apos;select({users.admin.models.referenceTable:priorities}, &quot;priority&quot;, &quot;code&quot;, {priority})&apos;
+		,&quot;&lt;color&gt;&lt;C&gt;&lt;F=N&gt;&quot;
+		,&apos;select({users.admin.models.referenceTable:priorities}, &quot;color&quot;, &quot;code&quot;, {priority})&apos;
+		,&quot;&lt;laboriousnessS&gt;&lt;S&gt;&lt;F=N&gt;&quot;
+		,&apos;select({users.admin.models.referenceTable:laboriousness}, &quot;laboriousness&quot;, &quot;code&quot;, {laboriousness})&apos;
+		,&quot;&lt;typeS&gt;&lt;S&gt;&lt;F=N&gt;&quot;
+		,&apos;select({users.admin.models.referenceTable:types}, &quot;type&quot;, &quot;code&quot;, {type})&apos;
+		,&quot;&lt;statusS&gt;&lt;S&gt;&lt;F=N&gt;&quot;
+		,&apos;select({users.admin.models.referenceTable:statuses}, &quot;title&quot;, &quot;code&quot;, {status})&apos;
+		,&quot;&lt;categoryS&gt;&lt;S&gt;&lt;F=N&gt;&quot;
+		,&apos;select({users.admin.models.referenceTable:categories}, &quot;category&quot;, &quot;code&quot;, {category})&apos;
+		,&quot;&lt;tagsS&gt;&lt;S&gt;&lt;F=N&gt;&quot;
+		,&apos;catch(print({tags},&quot;{tag}&quot;,&quot; &quot;),&quot;&quot;)&apos;
 	)
-	,&quot;&lt;parentS&gt;&lt;S&gt;&lt;F=N&gt;&quot;
-	,&apos;select({.:tasks}, &quot;summary&quot;, &quot;uuid&quot;, {parent})&apos;
-	,&quot;&lt;priorityS&gt;&lt;S&gt;&lt;F=N&gt;&lt;E=reference&gt;&quot;
-	,&apos;select({users.admin.models.referenceTable:priorities}, &quot;priority&quot;, &quot;code&quot;, {priority})&apos;
-	,&quot;&lt;color&gt;&lt;C&gt;&lt;F=N&gt;&quot;
-	,&apos;select({users.admin.models.referenceTable:priorities}, &quot;color&quot;, &quot;code&quot;, {priority})&apos;
-	,&quot;&lt;laboriousnessS&gt;&lt;S&gt;&lt;F=N&gt;&quot;
-	,&apos;select({users.admin.models.referenceTable:laboriousness}, &quot;laboriousness&quot;, &quot;code&quot;, {laboriousness})&apos;
-	,&quot;&lt;typeS&gt;&lt;S&gt;&lt;F=N&gt;&quot;
-	,&apos;select({users.admin.models.referenceTable:types}, &quot;type&quot;, &quot;code&quot;, {type})&apos;
-	,&quot;&lt;statusS&gt;&lt;S&gt;&lt;F=N&gt;&quot;
-	,&apos;select({users.admin.models.referenceTable:statuses}, &quot;title&quot;, &quot;code&quot;, {status})&apos;
-	,&quot;&lt;categoryS&gt;&lt;S&gt;&lt;F=N&gt;&quot;
-	,&apos;select({users.admin.models.referenceTable:categories}, &quot;category&quot;, &quot;code&quot;, {category})&apos;
-	,&quot;&lt;tagsS&gt;&lt;S&gt;&lt;F=N&gt;&quot;
-	,&apos;catch(print({tags},&quot;{tag}&quot;,&quot; &quot;),&quot;&quot;)&apos;
+	,{filterExpression} == null ? true : length({filterExpression}) == 0 ? true : {filterExpression} 
 )</value>
           </record>
           <record>
@@ -5892,6 +5934,7 @@ filter(
 	{.:}
 	,&quot;getTasksByProject&quot;
 	,{0}
+	,{1}
 )</value>
                   </record>
                   <record>
@@ -5899,11 +5942,7 @@ filter(
                     <value name="expression">subtable(
 	addColumns(
 		filter(
-			callFunction(
-				{.:}
-				,&quot;getTasksByProject&quot;
-				,{0} 
-			)
+			{env/tasksTable}
 			,&quot;{priority} == 0&quot;
 		)
 		,&quot;&lt;priority0&gt;&lt;S&gt;&lt;E=html&gt;&lt;F=N&gt;&lt;D=Critical&gt;&quot;
@@ -5918,11 +5957,7 @@ filter(
                     <value name="expression">subtable(
 	addColumns(
 		filter(
-			callFunction(
-				{.:}
-				,&quot;getTasksByProject&quot;
-				,{0} 
-			)
+{env/tasksTable}
 			,&quot;{priority} == 1&quot;
 		)
 		,&quot;&lt;priority1&gt;&lt;S&gt;&lt;E=html&gt;&lt;F=N&gt;&lt;D=Necessary&gt;&quot;
@@ -5937,11 +5972,7 @@ filter(
                     <value name="expression">subtable(
 	addColumns(
 		filter(
-			callFunction(
-				{.:}
-				,&quot;getTasksByProject&quot;
-				,{0} 
-			)
+{env/tasksTable}
 			,&quot;{priority} == 2&quot;
 		)
 		,&quot;&lt;priority2&gt;&lt;S&gt;&lt;E=html&gt;&lt;F=N&gt;&lt;D=Optional&gt;&quot;
@@ -5956,11 +5987,7 @@ filter(
                     <value name="expression">subtable(
 	addColumns(
 		filter(
-			callFunction(
-				{.:}
-				,&quot;getTasksByProject&quot;
-				,{0} 
-			)
+{env/tasksTable}
 			,&quot;{priority} == 3&quot;
 		)
 		,&quot;&lt;priority3&gt;&lt;S&gt;&lt;E=html&gt;&lt;F=N&gt;&lt;D=Desirable&gt;&quot;

@@ -3055,7 +3055,7 @@ public class %ScriptClassNamePattern% implements FunctionImplementation
                           <record>
                             <value name="name">article</value>
                             <value name="type">S</value>
-                            <value name="editor">html</value>
+                            <value name="editor">textarea</value>
                             <value name="editorOptions">
                               <table>
                                 <format maxRecords="1" minRecords="1">
